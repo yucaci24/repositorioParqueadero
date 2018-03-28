@@ -11,33 +11,49 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name = "vehiculo")
+@Table(name="parqueo")
+
 public class Vehiculo implements Serializable{
 	
+
+	//Attributes
 	@Id
-	@Column (name = "id_vehiculo")
-	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	public int idVehiculo;
+	@Column (name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	public int id;
 	
-	@Column (name = "placa")
+	@Column (name="placa")
 	public String placa;
 	
-	@Column(name = "hora")
-	public Date hora;
+	@Column (name="tipo_de_vehiculo", nullable= true)
+	public String tipo;
+	
+	@Column (name="cilindraje", nullable= true)
+	public int cilindraje;
+	
+	@Column (name="fecha_y_hora_entrada")
+	public Date fechaYHoraEntrada;
+	
 
-	public Vehiculo(int idVehiculo, String placa, Date hora) {
+	
+	public Vehiculo() {
 		super();
-		this.idVehiculo = idVehiculo;
+		// TODO Auto-generated constructor stub
+	}
+	
+	//Constructor
+	public Vehiculo(String placa) {
 		this.placa = placa;
-		this.hora = hora;
+	}
+	
+	//Getters and setters
+	public int getId() {
+		return id;
 	}
 
-	public int getIdVehiculo() {
-		return idVehiculo;
-	}
-
-	public void setIdVehiculo(int idVehiculo) {
-		this.idVehiculo = idVehiculo;
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getPlaca() {
@@ -48,14 +64,29 @@ public class Vehiculo implements Serializable{
 		this.placa = placa;
 	}
 
-	public Date getHora() {
-		return hora;
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setHora(Date hora) {
-		this.hora = hora;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	
-	
+	public int getCilindraje() {
+		return cilindraje;
+	}
+
+	public void setCilindraje(int cilindraje) {
+		this.cilindraje = cilindraje;
+	}
+
+	public Date getFechaYHoraEntrada() {
+		return fechaYHoraEntrada;
+	}
+
+	public void setFechaYHoraEntrada(Date fechaYHoraEntrada) {
+		this.fechaYHoraEntrada = fechaYHoraEntrada;
+	}
+
 }

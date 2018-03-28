@@ -15,7 +15,6 @@ apply plugin: 'jacoco'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 
-
 group = 'com.ceiba'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
@@ -24,16 +23,17 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '5.1.2.Final'
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.21'
+	
 }
 
 test {
-// systemProperties 'property': 'value'
 jacoco {
 append = false
 destinationFile = file("jacoco/jacocoTest.exec")
@@ -41,5 +41,3 @@ destinationFile = file("jacoco/jacocoTest.exec")
 reports.junitXml.destination = file ("jacoco/test-results")
 }
 jacocoTestReport.dependsOn(test)
-
-
