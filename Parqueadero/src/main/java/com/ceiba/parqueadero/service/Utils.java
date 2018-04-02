@@ -17,16 +17,16 @@ public class Utils {
 	} 
 	
 	
-	public String ComprobarLetraInicial (String placa) {
-		if (placa.length()!=5) {
-			System.out.println("la placa debe tener 6 caracteres");
-			System.out.println(placa);
-		}
-		if (placa.substring(0, 1).equalsIgnoreCase("a")) {
-			System.out.println("empieza por a");
-		}
-		return placa;
-	}
+//	public String ComprobarLetraInicial (String placa) {
+//		if (placa.length()!=5) {
+//			System.out.println("la placa debe tener 6 caracteres");
+//			System.out.println(placa);
+//		}
+//		if (placa.substring(0, 1).equalsIgnoreCase("a")) {
+//			System.out.println("empieza por a");
+//		}
+//		return placa;
+//	}
 	
 	
 }
