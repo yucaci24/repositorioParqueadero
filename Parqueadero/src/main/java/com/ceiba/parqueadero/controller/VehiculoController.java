@@ -1,9 +1,5 @@
 package com.ceiba.parqueadero.controller;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -43,16 +39,7 @@ public class VehiculoController {
 			}
 			return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
 	}
-	
-//	@RequestMapping(value = "/teachers/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
-//    public ResponseEntity<Teacher> getCourseById(@PathVariable("id") Long id){
-//		Teacher teacher = _teacherService.findById(id);
-//        if (teacher == null) {
-//            return new ResponseEntity(HttpStatus.NOT_FOUND);
-//            // You many decide to return HttpStatus.NOT_FOUND
-//        }
-//        return new ResponseEntity<Teacher>(teacher, HttpStatus.OK);
-//    }
+
 	
 	@RequestMapping(value = "/ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder){

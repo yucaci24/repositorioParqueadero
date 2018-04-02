@@ -14,7 +14,8 @@ import javax.persistence.Table;
 @Table(name="parqueo")
 
 public class Vehiculo implements Serializable{
-	
+
+	private static final long serialVersionUID = 1L;
 
 	//Attributes
 	@Id
@@ -38,7 +39,6 @@ public class Vehiculo implements Serializable{
 	
 	public Vehiculo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	//Constructor

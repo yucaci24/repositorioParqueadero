@@ -1,42 +1,48 @@
 package com.ceiba.parqueadero.service;
 
-import java.awt.List;
-import java.util.ArrayList;
 import java.util.Date;
-
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ceiba.parqueadero.dao.VehiculoDao;
+import com.ceiba.parqueadero.model.Parqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
 
 @Service("vehiculoService")
 @Transactional
-public class VehiculoServiceImpl implements VehiculoService{
+public class VehiculoServiceImpl extends Utils implements VehiculoService{
 
 	@Autowired
 	public VehiculoDao _vehiculoDao;
-	public int precio;
+	public Parqueadero _parqueaderoDao;
+	
 	
 	@Override
 	public void ingresarVehiculo(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
+		Date date = new Date();
+		String letra = new Vehiculo().placa;
 		
+		//if (ComprobarLetraInicial(letra)== "a") {
+//		if (obtenerDiaDeLaSemana(date)==1 || obtenerDiaDeLaSemana(date)==2 ) {
+//			_vehiculoDao.ingresarVehiculo(vehiculo);
+//			}else {
+//				System.out.println("las placas que inician por la letra A, solo pueden ingresar domingo y lunes");
+//			}
+//		}
+			
 		_vehiculoDao.ingresarVehiculo(vehiculo);
-	}
-
+		}
+		
 	@Override
 	public Vehiculo salirVehiculo(String placa) {
-		// TODO Auto-generated method stub
 		return _vehiculoDao.salirVehiculo(placa);
 	}
 
 	@Override
 	public Vehiculo consultarVehiculo(String placa) {
-		// TODO Auto-generated method stub
 		return _vehiculoDao.consultarVehiculo(placa);
-}
+	}
+	
 }
