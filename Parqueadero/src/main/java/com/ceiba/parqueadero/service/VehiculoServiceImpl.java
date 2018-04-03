@@ -22,18 +22,11 @@ public class VehiculoServiceImpl extends Utils implements VehiculoService{
 	@Override
 	public void ingresarVehiculo(Vehiculo vehiculo) {
 		Date date = new Date();
-		String letra = new Vehiculo().placa;
-		
-		//if (ComprobarLetraInicial(letra)== "a") {
-//		if (obtenerDiaDeLaSemana(date)==1 || obtenerDiaDeLaSemana(date)==2 ) {
-//			_vehiculoDao.ingresarVehiculo(vehiculo);
-//			}else {
-//				System.out.println("las placas que inician por la letra A, solo pueden ingresar domingo y lunes");
-//			}
-//		}
-			
-		_vehiculoDao.ingresarVehiculo(vehiculo);
+		String letra = vehiculo.getPlaca();
+		if ((comprobarLetraInicial(letra)) && (obtenerDia(date))) {
+				_vehiculoDao.ingresarVehiculo(vehiculo);
 		}
+	}
 		
 	@Override
 	public Vehiculo salirVehiculo(String placa) {

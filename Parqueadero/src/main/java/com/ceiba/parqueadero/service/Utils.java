@@ -4,29 +4,23 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import com.ceiba.parqueadero.model.Parqueadero;
-
 
 public class Utils {
 
-	
-	public int obtenerDiaDeLaSemana(Date d){
+	public boolean obtenerDia (Date d){
 		GregorianCalendar cal = new GregorianCalendar();
 		cal.setTime(d);
-		return cal.get(Calendar.DAY_OF_WEEK);		
-	} 
+		if ((cal.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY )|| (cal.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)) {
+			return true;
+		}return false;
+	}
 	
-	
-//	public String ComprobarLetraInicial (String placa) {
-//		if (placa.length()!=5) {
-//			System.out.println("la placa debe tener 6 caracteres");
-//			System.out.println(placa);
-//		}
-//		if (placa.substring(0, 1).equalsIgnoreCase("a")) {
-//			System.out.println("empieza por a");
-//		}
-//		return placa;
-//	}
-	
+	public boolean comprobarLetraInicial (String placa) {	
+		String firstLetter = placa.substring(0, 1);
+		if (firstLetter.equals("a")) {
+			return true;
+		}
+		return false;
+	}
 	
 }

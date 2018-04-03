@@ -1,6 +1,5 @@
 package com.ceiba.parqueadero.service;
 
-import java.util.Date;
 
 import com.ceiba.parqueadero.model.Vehiculo;
 
