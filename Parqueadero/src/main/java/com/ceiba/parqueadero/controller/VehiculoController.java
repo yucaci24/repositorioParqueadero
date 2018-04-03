@@ -63,9 +63,14 @@ public class VehiculoController {
 	
 	
 	
-	@RequestMapping (value = "/salida", method = RequestMethod.GET, headers = "Accept=application/json")
+	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
-	public Vehiculo salirVehiculo (@RequestParam(value="placa", required=false) String placa) {
-		return _vehiculoService.salirVehiculo(placa);
+	public ResponseEntity<Vehiculo> salirVehiculo (@RequestParam(value="placa", required=false) String placa) {
+		Vehiculo vehiculo = _vehiculoService.salirVehiculo(placa);
+		if (placa == null) {
+			return new ResponseEntity(HttpStatus.NOT_FOUND);
+			// You many decide to return HttpStatus.NOT_FOUND
+	}
+	return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
 	}
 }

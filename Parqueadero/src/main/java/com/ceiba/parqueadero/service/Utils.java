@@ -4,23 +4,40 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import com.ceiba.parqueadero.model.Vehiculo;
+
 
 public class Utils {
 
-	public boolean obtenerDia (Date d){
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(d);
-		if ((cal.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY )|| (cal.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)) {
+	public boolean obtenerDia (Date dia){
+		GregorianCalendar calendario = new GregorianCalendar();
+		calendario.setTime(dia);
+		if ((calendario.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY )|| (calendario.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY)) {
 			return true;
 		}return false;
 	}
 	
 	public boolean comprobarLetraInicial (String placa) {	
-		String firstLetter = placa.substring(0, 1);
-		if (firstLetter.equals("a")) {
+		String primeraLetra = placa.substring(0, 1);
+		if (primeraLetra.equals("a")) {
 			return true;
-		}
-		return false;
+		}return false;
 	}
+	
+//	public int cobrarMoto (Date fechaEntrada, Date fechaSalida) {
+//		
+//		long diferencia =  fechaEntrada.getTime()- fechaSalida.getTime();
+//		int cobro=0;
+//		
+//		return (int) diferencia;
+//	}
+//	
+//	public int aumentarCeldas (int disponiblesCarro, int disponiblesMoto) {
+//		return int;
+//	}
+//	
+//	public int disminuirCeldas (int disponiblesCarro, int disponiblesMoto) {
+//		return
+//	}
 	
 }
