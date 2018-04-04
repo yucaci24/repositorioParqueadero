@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import com.ceiba.parqueadero.model.Parqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
+import com.ceiba.parqueadero.service.ParqueaderoService;
 import com.ceiba.parqueadero.service.VehiculoService;
 
 @Controller
@@ -21,7 +23,9 @@ import com.ceiba.parqueadero.service.VehiculoService;
 public class VehiculoController {
 	
 	@Autowired
-	public VehiculoService _vehiculoService;
+	public VehiculoService vehiculoService;
+	@Autowired
+	public ParqueaderoService parqueaderoService;
 	
 	@RequestMapping (value = "/b")
 	@ResponseBody
@@ -32,7 +36,7 @@ public class VehiculoController {
 	
 	@RequestMapping (value = "/consultas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseEntity<Vehiculo> consultarVehiculo(@PathVariable("placa")String placa){
-		Vehiculo vehiculo = _vehiculoService.consultarVehiculo(placa);
+		Vehiculo vehiculo = vehiculoService.consultarVehiculo(placa);
 			if (placa == null) {
 					return new ResponseEntity(HttpStatus.NOT_FOUND);
 					// You many decide to return HttpStatus.NOT_FOUND
@@ -43,14 +47,16 @@ public class VehiculoController {
 	
 	@RequestMapping(value = "/ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder){
-		if (vehiculo.getPlaca().equals(null) || vehiculo.getPlaca().isEmpty() ) {
+		if (vehiculo.getPlaca()==(null) || vehiculo.getPlaca().isEmpty() ) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
-		if (_vehiculoService.consultarVehiculo(vehiculo.getPlaca())!= null) {
+		if (vehiculoService.consultarVehiculo(vehiculo.getPlaca())!= null) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
-		_vehiculoService.ingresarVehiculo(vehiculo);
-		Vehiculo vehiculo2 = _vehiculoService.consultarVehiculo(vehiculo.getPlaca());
+		
+		
+		vehiculoService.ingresarVehiculo(vehiculo, null);
+		Vehiculo vehiculo2 = vehiculoService.consultarVehiculo(vehiculo.getPlaca());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(
 				uriComponentsBuilder.path("/n1/ingresos/{id}")
@@ -66,7 +72,7 @@ public class VehiculoController {
 	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
 	@ResponseBody
 	public ResponseEntity<Vehiculo> salirVehiculo (@RequestParam(value="placa", required=false) String placa) {
-		Vehiculo vehiculo = _vehiculoService.salirVehiculo(placa);
+		Vehiculo vehiculo = vehiculoService.salirVehiculo(placa);
 		if (placa == null) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
 			// You many decide to return HttpStatus.NOT_FOUND
