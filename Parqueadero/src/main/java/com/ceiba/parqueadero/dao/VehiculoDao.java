@@ -7,4 +7,6 @@ public interface VehiculoDao {
 	void ingresarVehiculo (Vehiculo vehiculo);
 	Vehiculo consultarVehiculo (String placa);
 	Vehiculo salirVehiculo (String placa);
+	int consultarCantidadCarros ();
+	int consultarCantidadMotos ();
 }

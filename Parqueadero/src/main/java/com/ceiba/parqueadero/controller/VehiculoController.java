@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.ceiba.parqueadero.model.Parqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
-import com.ceiba.parqueadero.service.ParqueaderoService;
 import com.ceiba.parqueadero.service.VehiculoService;
 
 @Controller
@@ -24,8 +22,6 @@ public class VehiculoController {
 	
 	@Autowired
 	public VehiculoService vehiculoService;
-	@Autowired
-	public ParqueaderoService parqueaderoService;
 	
 	@RequestMapping (value = "/b")
 	@ResponseBody
@@ -33,17 +29,6 @@ public class VehiculoController {
 		String response = "Bienvenido a  parqueadero :D";
 		return response;
 	}
-	
-	@RequestMapping (value = "/consultas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public ResponseEntity<Vehiculo> consultarVehiculo(@PathVariable("placa")String placa){
-		Vehiculo vehiculo = vehiculoService.consultarVehiculo(placa);
-			if (placa == null) {
-					return new ResponseEntity(HttpStatus.NOT_FOUND);
-					// You many decide to return HttpStatus.NOT_FOUND
-			}
-			return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
-	}
-
 	
 	@RequestMapping(value = "/ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder){
@@ -54,19 +39,15 @@ public class VehiculoController {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 		
-		
-		vehiculoService.ingresarVehiculo(vehiculo, null);
+		vehiculoService.ingresarVehiculo(vehiculo);
 		Vehiculo vehiculo2 = vehiculoService.consultarVehiculo(vehiculo.getPlaca());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(
 				uriComponentsBuilder.path("/n1/ingresos/{id}")
-				.buildAndExpand(vehiculo2.getPlaca())
+				.buildAndExpand(vehiculo.getPlaca())
 				.toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
-	
-	
-	
 	
 	
 	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
@@ -79,4 +60,16 @@ public class VehiculoController {
 	}
 	return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
 	}
+	
+	
+	@RequestMapping (value = "/consultas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public ResponseEntity<Vehiculo> consultarVehiculo(@PathVariable("placa")String placa){
+		Vehiculo vehiculo = vehiculoService.consultarVehiculo(placa);
+			if (placa == null) {
+					return new ResponseEntity(HttpStatus.NOT_FOUND);
+					// You many decide to return HttpStatus.NOT_FOUND
+			}
+			return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
+	}
+
 }

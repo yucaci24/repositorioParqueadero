@@ -27,7 +27,7 @@ public class Vehiculo implements Serializable{
 	public String placa;
 	
 	@Column (name="tipo_de_vehiculo", nullable= true)
-	public String tipo;
+	public int tipo;
 	
 	@Column (name="cilindraje", nullable= true)
 	public int cilindraje;
@@ -35,7 +35,8 @@ public class Vehiculo implements Serializable{
 	@Column (name="fecha_y_hora_entrada")
 	public Date fechaYHoraEntrada;
 	
-
+	@Column (name="estado")
+	public int estado;
 	
 	public Vehiculo() {
 		super();
@@ -63,16 +64,7 @@ public class Vehiculo implements Serializable{
 	public void setPlaca(String placa) {
 		this.placa = placa;
 	}
-
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
+	
 	public int getCilindraje() {
 		return cilindraje;
 	}
@@ -87,6 +79,22 @@ public class Vehiculo implements Serializable{
 
 	public void setFechaYHoraEntrada(Date fechaYHoraEntrada) {
 		this.fechaYHoraEntrada = fechaYHoraEntrada;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	public int getEstado() {
+		return estado;
+	}
+
+	public void setEstado(int estado) {
+		this.estado = estado;
 	}
 
 }

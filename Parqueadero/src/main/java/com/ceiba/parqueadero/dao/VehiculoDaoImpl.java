@@ -29,4 +29,19 @@ public class VehiculoDaoImpl extends SessionObjeto implements VehiculoDao{
 				.setParameter("placa", placa).uniqueResult();
 	}
 
+	@Override
+	public int consultarCantidadCarros() {
+		int cantidad= ((Number) getSession()
+				.createQuery("select count (*) from Vehiculo ve where ve.estado=1 and ve.tipo=1")
+				.uniqueResult()).intValue();
+		return cantidad;
+	}
+
+	@Override
+	public int consultarCantidadMotos() {
+		int cantidad= ((Number) getSession()
+				.createQuery("select count (*) from Vehiculo ve where ve.estado=1 and ve.tipo=2")
+				.uniqueResult()).intValue();
+		return cantidad;
+	}
 }
