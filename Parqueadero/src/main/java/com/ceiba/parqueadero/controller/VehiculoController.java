@@ -31,16 +31,16 @@ public class VehiculoController {
 	}
 	
 	@RequestMapping(value = "/ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
-	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder){
+	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder, boolean estado){
 		if (vehiculo.getPlaca()==(null) || vehiculo.getPlaca().isEmpty() ) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
-		if (vehiculoService.consultarVehiculo(vehiculo.getPlaca())!= null) {
+		if ((vehiculoService.consultarVehiculoPorPlaca(vehiculo.getPlaca())!= null)) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
+	}
 		
 		vehiculoService.ingresarVehiculo(vehiculo);
-		Vehiculo vehiculo2 = vehiculoService.consultarVehiculo(vehiculo.getPlaca());
+		Vehiculo vehiculo2 = vehiculoService.consultarVehiculoPorPlaca(vehiculo.getPlaca());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(
 				uriComponentsBuilder.path("/n1/ingresos/{id}")
@@ -50,24 +50,26 @@ public class VehiculoController {
 	}
 	
 	
-	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
-	@ResponseBody
-	public ResponseEntity<Vehiculo> salirVehiculo (@RequestParam(value="placa", required=false) String placa) {
-		Vehiculo vehiculo = vehiculoService.salirVehiculo(placa);
+	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.PATCH, headers = "Accept=application/json")
+	public ResponseEntity<Vehiculo> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo) {
 		if (placa == null) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);
-			// You many decide to return HttpStatus.NOT_FOUND
-	}
-	return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
+		}
+		Vehiculo vehiculoFuera = vehiculoService.consultarVehiculoPorPlaca(placa);
+		if (vehiculoFuera==null) {
+			return new ResponseEntity(HttpStatus.NO_CONTENT);
+		}
+		vehiculoFuera.setEstado(vehiculo.isEstado());
+		vehiculoService.salirVehiculo(vehiculoFuera);
+	return new ResponseEntity<Vehiculo>(vehiculoFuera, HttpStatus.OK);
 	}
 	
 	
 	@RequestMapping (value = "/consultas/{placa}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public ResponseEntity<Vehiculo> consultarVehiculo(@PathVariable("placa")String placa){
-		Vehiculo vehiculo = vehiculoService.consultarVehiculo(placa);
+		Vehiculo vehiculo = vehiculoService.consultarVehiculoPorPlaca(placa);
 			if (placa == null) {
 					return new ResponseEntity(HttpStatus.NOT_FOUND);
-					// You many decide to return HttpStatus.NOT_FOUND
 			}
 			return new ResponseEntity<Vehiculo>(vehiculo, HttpStatus.OK);
 	}

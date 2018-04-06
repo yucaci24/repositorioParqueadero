@@ -36,7 +36,7 @@ public class Vehiculo implements Serializable{
 	public Date fechaYHoraEntrada;
 	
 	@Column (name="estado")
-	public int estado;
+	public boolean estado;
 	
 	public Vehiculo() {
 		super();
@@ -89,12 +89,11 @@ public class Vehiculo implements Serializable{
 		this.tipo = tipo;
 	}
 
-	public int getEstado() {
+	public boolean isEstado() {
 		return estado;
 	}
 
-	public void setEstado(int estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-
 }

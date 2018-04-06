@@ -16,17 +16,22 @@ public class VehiculoDaoImpl extends SessionObjeto implements VehiculoDao{
 	}
 
 	@Override
-	public Vehiculo consultarVehiculo(String placa) {
+	public Vehiculo consultarVehiculoPorPlaca(String placa) {
 		return (Vehiculo)getSession().createQuery(
 				"from Vehiculo where placa = :placa")
 				.setParameter("placa", placa).uniqueResult();
 	}
+	
+	@Override
+	public Vehiculo consultarVehiculoPorEstado(boolean estado) {
+		return (Vehiculo)getSession().createQuery(
+				"from Vehiculo where estado = :estado")
+				.setParameter("estado", estado);
+	}
 
 	@Override
-	public Vehiculo salirVehiculo(String placa) {
-		return (Vehiculo)getSession().createQuery(
-				"from Vehiculo where placa = :placa")
-				.setParameter("placa", placa).uniqueResult();
+	public void salirVehiculo(Vehiculo vehiculo) {
+		getSession().update(vehiculo);
 	}
 
 	@Override

@@ -50,16 +50,19 @@ public class VehiculoServiceImpl extends Utils implements VehiculoService{
 		}
 	}
 	
-	
-	
 	@Override
-	public Vehiculo salirVehiculo(String placa) {
-		return vehiculoDao.salirVehiculo(placa);
+	public void salirVehiculo(Vehiculo vehiculo) {
+		 vehiculoDao.salirVehiculo(vehiculo);
 	}
-
+	
 	@Override
-	public Vehiculo consultarVehiculo(String placa) {
-		return vehiculoDao.consultarVehiculo(placa);
+	public Vehiculo consultarVehiculoPorPlaca(String placa) {
+		return vehiculoDao.consultarVehiculoPorPlaca(placa);
+	}
+	
+	@Override
+	public Vehiculo consultarVehiculoPorEstado(boolean estado) {
+		return (Vehiculo)vehiculoDao.consultarVehiculoPorEstado(estado);
 	}
 	
 	@Override
@@ -71,6 +74,4 @@ public class VehiculoServiceImpl extends Utils implements VehiculoService{
 	public int consultarCantidadMotos() {
 		return vehiculoDao.consultarCantidadMotos();
 	}
-
-
 }

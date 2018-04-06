@@ -5,8 +5,9 @@ import com.ceiba.parqueadero.model.Vehiculo;
 public interface VehiculoDao {
 	
 	void ingresarVehiculo (Vehiculo vehiculo);
-	Vehiculo consultarVehiculo (String placa);
-	Vehiculo salirVehiculo (String placa);
+	Vehiculo consultarVehiculoPorPlaca (String placa);
+	Vehiculo consultarVehiculoPorEstado (boolean estado);
+	void salirVehiculo (Vehiculo vehiculo);
 	int consultarCantidadCarros ();
 	int consultarCantidadMotos ();
 }
