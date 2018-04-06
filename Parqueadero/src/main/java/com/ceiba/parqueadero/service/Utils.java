@@ -81,9 +81,10 @@ public class Utils {
 	}
 	
 	public int restarFechas (int horas, int minutos, int dias) {
-		//SimpleDateFormat dateFormat = new simpleDateFormat ("yyyy-MM-dd H:m:s");
+		
 		Date fechaYHoraDeSalida = new Date ();
 		Date fechaYHoraDeEntrada = new Date ();
+		
 		int resultado= (int)(fechaYHoraDeSalida.getTime()-fechaYHoraDeEntrada.getTime()/1000);
 		
 		if (resultado>86400) {
