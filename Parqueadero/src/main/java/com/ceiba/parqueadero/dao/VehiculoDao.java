@@ -10,4 +10,5 @@ public interface VehiculoDao {
 	void salirVehiculo (Vehiculo vehiculo);
 	int consultarCantidadCarros ();
 	int consultarCantidadMotos ();
+	int consultarCantidadCeldas( int tipoVehiculo );
 }
