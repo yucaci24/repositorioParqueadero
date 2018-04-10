@@ -9,10 +9,10 @@ public class CalculadoraTiempo {
 	public static final double HOURS_IN_SECONDS = 3600;
 	public static final double MINUTES_IN_SECONDS = 60;
 	
-	public int calcularDias( double tiempoIns ){
+	public int calcularDias( double tiempoInSeconds ){
 		int cantDias = 0;
-		if ( tiempoIns > DAY_IN_SECONDS ) {
-			cantDias = BigDecimal.valueOf( Math.floor( tiempoIns / DAY_IN_SECONDS ) ).intValue();
+		if ( tiempoInSeconds > DAY_IN_SECONDS ) {
+			cantDias = BigDecimal.valueOf( Math.floor( tiempoInSeconds / DAY_IN_SECONDS ) ).intValue();
 		}
 		return cantDias;
 	}

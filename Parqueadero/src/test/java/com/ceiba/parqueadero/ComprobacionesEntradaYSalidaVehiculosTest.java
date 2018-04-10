@@ -123,6 +123,3 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	}
 }
 
-//Arrange
-//Act
-//Assert

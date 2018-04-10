@@ -25,7 +25,7 @@ public class VehiculoController {
 	@RequestMapping (value = "/b")
 	@ResponseBody
 	public String index() {
-		String response = "Bienvenido a  parqueadero :D";
+		String response = ("Bienvenido a  parqueadero :D");
 		return response;
 	}
 	

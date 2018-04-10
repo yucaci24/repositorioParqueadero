@@ -5,14 +5,14 @@ public enum TipoVehiculo {
 	CARRO(1),
 	MOTO(2);
 	
-	private int tipoVehiculo;
+	private int tipoVehiculoIngreso;
 	
 	private TipoVehiculo(int tipo) {
-		this.tipoVehiculo = tipo;
+		this.tipoVehiculoIngreso = tipo;
 	}
 	
 	public int getTipoVehiculo() {
-		return tipoVehiculo;
+		return tipoVehiculoIngreso;
 	}
 
 
