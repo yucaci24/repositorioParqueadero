@@ -34,11 +34,18 @@ public class VehiculoController {
 		if (vehiculo.getPlaca()==(null) || vehiculo.getPlaca().isEmpty() ) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
+		
 		if ((vehiculoService.consultarVehiculoPorPlaca(vehiculo.getPlaca())!= null)) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
-	}
+		}
 		
-		vehiculoService.ingresarVehiculo(vehiculo);
+		try {
+			vehiculoService.ingresarVehiculo(vehiculo);
+		}catch( Exception e ) {
+			return new ResponseEntity<String>(e.getMessage(), HttpStatus.FORBIDDEN);
+		}
+		
+		
 		Vehiculo vehiculo2 = vehiculoService.consultarVehiculoPorPlaca(vehiculo.getPlaca());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(
