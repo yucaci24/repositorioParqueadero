@@ -33,7 +33,7 @@ public class CalculadoraCobro {
 		int cobroAdicional = 0;
 		double diferenciaFechas = 0;
 		
-		diferenciaFechas = calculadoraT.calcularDiferenciaTiempoInMili(fechaYHoraDeEntrada, fechaYHoraDeSalida);
+		diferenciaFechas = calculadoraT.calcularDiferenciaTiempoInSeconds(fechaYHoraDeEntrada, fechaYHoraDeSalida);
 		
 		if( vehiculo.getTipo() == TipoVehiculo.MOTO.getTipoVehiculo() ) {			
 			cobroTotal = calcularTotal( diferenciaFechas, ParametrosParqueadero.COBRO_DIA_MOTO, ParametrosParqueadero.COBRO_HORA_MOTO);

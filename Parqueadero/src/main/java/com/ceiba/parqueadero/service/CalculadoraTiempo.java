@@ -17,23 +17,23 @@ public class CalculadoraTiempo {
 		return cantDias;
 	}
 	
-	public int calcularHoras( double tiempoInMili ){
+	public int calcularHoras( double tiempoInSeconds ){
 		int cantHoras = 0;
-		if ( tiempoInMili > HOURS_IN_SECONDS ) {
-			cantHoras = BigDecimal.valueOf( Math.floor( tiempoInMili / HOURS_IN_SECONDS ) ).intValue();
+		if ( tiempoInSeconds > HOURS_IN_SECONDS ) {
+			cantHoras = BigDecimal.valueOf( Math.floor( tiempoInSeconds / HOURS_IN_SECONDS ) ).intValue();
 		}
 		return cantHoras;
 	}
 	
-	public int calcularPorMinutos( double tiempoInMili ){
+	public int calcularPorMinutos( double tiempoInSeconds ){
 		int cantMinutos = 0;
-		if ( tiempoInMili > MINUTES_IN_SECONDS ) {
-			cantMinutos = BigDecimal.valueOf( Math.floor( tiempoInMili / MINUTES_IN_SECONDS ) ).intValue();
+		if ( tiempoInSeconds > MINUTES_IN_SECONDS ) {
+			cantMinutos = BigDecimal.valueOf( Math.floor( tiempoInSeconds / MINUTES_IN_SECONDS ) ).intValue();
 		}
 		return cantMinutos;
 	}
 	
-	public double calcularDiferenciaTiempoInMili( Date fechaEntrada, Date fechaSalida ) {
+	public double calcularDiferenciaTiempoInSeconds( Date fechaEntrada, Date fechaSalida ) {
 		return  BigDecimal.valueOf((fechaSalida.getTime() - fechaEntrada.getTime()) / 1000).doubleValue();
 	}
 
