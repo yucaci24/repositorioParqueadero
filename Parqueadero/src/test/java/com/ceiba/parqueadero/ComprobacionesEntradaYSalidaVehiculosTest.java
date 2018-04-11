@@ -9,8 +9,10 @@ import org.junit.Test;
 
 import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
 
+
 public class ComprobacionesEntradaYSalidaVehiculosTest {
 	
+
 	@Test
 	public void validarTipoVehiculo2() {
 		//Arrange
@@ -121,5 +123,5 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		//Assert
 		assertTrue(cilindrajeMayor);
 	}
-}
 
+}
