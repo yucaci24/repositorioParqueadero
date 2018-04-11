@@ -119,7 +119,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		boolean cilindrajeMayor = validaciones.verificarCilindraje(cilindraje);
 		
 		//Assert
-		assertFalse(cilindrajeMayor);
+		assertTrue(cilindrajeMayor);
 	}
 }
 
