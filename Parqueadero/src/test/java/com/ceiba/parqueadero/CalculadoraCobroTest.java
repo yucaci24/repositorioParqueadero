@@ -67,5 +67,10 @@ public class CalculadoraCobroTest {
 		assertEquals(500, cobroMinutos);
 	}
 	
-	
+	public void validarCalculoTotalCobro () {
+		//Arrange
+		
+		//Act
+		//Assert
+	}
 }
