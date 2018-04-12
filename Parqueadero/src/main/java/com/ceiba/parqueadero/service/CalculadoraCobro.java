@@ -8,11 +8,11 @@ import com.ceiba.parqueadero.model.Vehiculo;
 public class CalculadoraCobro {
 	
 	
-	private long calcularCobroPorDia( int cantDias, int valorPorDiaTipoVehiculo ){
+	public long calcularCobroPorDia( int cantDias, int valorPorDiaTipoVehiculo ){
 		return (cantDias * valorPorDiaTipoVehiculo);
 	}
 	
-	private long calcularCobroPorHoras( int cantHoras, int valorPorHoraTipoVehiculo, int valorPorDiaTipoVehiculo ){
+	public long calcularCobroPorHoras( int cantHoras, int valorPorHoraTipoVehiculo, int valorPorDiaTipoVehiculo ){
 		
 		if( cantHoras > 9 ) {
 			return valorPorDiaTipoVehiculo;
