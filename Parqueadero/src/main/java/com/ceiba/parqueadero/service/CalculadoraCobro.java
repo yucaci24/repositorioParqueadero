@@ -48,7 +48,7 @@ public class CalculadoraCobro {
 		return cobroTotal + cobroAdicional;
 	}
 	
-	private long calcularTotal( double diferenciaFechas, int cobroDiaVehiculo, int cobroHoraVehiculo ) {
+	public long calcularTotal( double diferenciaFechas, int cobroDiaVehiculo, int cobroHoraVehiculo ) {
 		CalculadoraTiempo calculadoraT = new CalculadoraTiempo();
 		long cobroDias = 0;
 		int restoHoras = 0;

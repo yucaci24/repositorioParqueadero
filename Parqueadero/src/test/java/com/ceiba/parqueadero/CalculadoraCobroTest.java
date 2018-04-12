@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.ceiba.parqueadero.service.CalculadoraCobro;
+import com.ceiba.parqueadero.service.CalculadoraTiempo;
 
 public class CalculadoraCobroTest {
 	
@@ -67,10 +68,4 @@ public class CalculadoraCobroTest {
 		assertEquals(500, cobroMinutos);
 	}
 	
-	public void validarCalculoTotalCobro () {
-		//Arrange
-		
-		//Act
-		//Assert
-	}
 }
