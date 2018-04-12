@@ -7,7 +7,10 @@ import java.util.Date;
 
 import org.junit.Test;
 
+import com.ceiba.parqueadero.dao.VehiculoDao;
 import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
+import com.ceiba.parqueadero.service.ParametrosParqueadero;
+import com.ceiba.parqueadero.service.TipoVehiculo;
 
 
 public class ComprobacionesEntradaYSalidaVehiculosTest {
@@ -37,6 +40,64 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		
 		//Assert
 		assertTrue(tipoValido);
+	}
+	
+	@Test
+	public void validarPlacaEmpiezaA () {
+		//Arrange
+		String placa = "ART258";
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		boolean empiezaA = validaciones.comprobarLetraInicial(placa);
+		
+		//Assert
+		assertTrue(empiezaA);
+	}
+	
+	@Test
+	public void validarPlacaNoEmpiezaA () {
+		//Arrange
+		String placa = "ORT258";
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		boolean empiezaA = validaciones.comprobarLetraInicial(placa);
+		
+		//Assert
+		assertFalse(empiezaA);
+	}
+	
+	@Test
+	public void validarObtenerDiaSiDomingo () {
+		//Arrange
+		Calendar fecha = Calendar.getInstance();
+		fecha.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		Date dia = fecha.getTime();
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		boolean siEsDomingo = validaciones.obtenerDia(dia);
+		
+		//Assert
+		assertTrue(siEsDomingo);
+		
+	}
+	
+	@Test
+	public void validarObtenerDiaNoDomingo () {
+		//Arrange
+		Calendar fecha = Calendar.getInstance();
+		fecha.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+		Date dia = fecha.getTime();
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		boolean siEsDomingo = validaciones.obtenerDia(dia);
+		
+		//Assert
+		assertFalse(siEsDomingo);
+		
 	}
 	
 	@Test
@@ -112,7 +173,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	}
 	
 	@Test
-	public void validarCilindraje () {
+	public void validarCilindrajeMayor () {
 		//Arrange
 		int cilindraje = 600;
 		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
@@ -124,4 +185,48 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		assertTrue(cilindrajeMayor);
 	}
 
+	@Test
+	public void validarCilindrajeMenor () {
+		//Arrange
+		int cilindraje = 200;
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		boolean cilindrajeMayor = validaciones.verificarCilindraje(cilindraje);
+		
+		//Assert
+		assertFalse(cilindrajeMayor);
+	}
+	
+	@Test
+	public void validarCantidadCeldasCarro() {
+		//Arrange
+		int carro = 1;
+		boolean disponiblesCarros = false;
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		if (carro==1) {
+			disponiblesCarros = 19< ParametrosParqueadero.CELDAS_CARROS;
+		}
+		
+		//Assert
+		assertTrue(disponiblesCarros);
+	}
+	
+	@Test
+	public void validarCantidadCeldasMoto() {
+		//Arrange
+		int moto = 2;
+		boolean disponiblesMotos = false;
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		if (moto==2) {
+			disponiblesMotos = 9< ParametrosParqueadero.CELDAS_MOTOS;
+		}
+		
+		//Assert
+		assertTrue(disponiblesMotos);
+	}
 }

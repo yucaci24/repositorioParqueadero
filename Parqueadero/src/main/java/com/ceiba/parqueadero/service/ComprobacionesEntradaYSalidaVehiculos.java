@@ -22,11 +22,11 @@ public class ComprobacionesEntradaYSalidaVehiculos {
 			return tipo == TipoVehiculo.CARRO.getTipoVehiculo();
 		}
 		
-		private boolean comprobarLetraInicial (String placa) {	
+		public boolean comprobarLetraInicial (String placa) {	
 			return placa.substring(0, 1).equalsIgnoreCase("a");
 		}
 		
-		private boolean obtenerDia (Date dia){
+		public boolean obtenerDia (Date dia){
 			GregorianCalendar calendario = new GregorianCalendar();
 			calendario.setTime(dia);
 			return calendario.get(Calendar.DAY_OF_WEEK)==Calendar.MONDAY || calendario.get(Calendar.DAY_OF_WEEK)==Calendar.SUNDAY;
