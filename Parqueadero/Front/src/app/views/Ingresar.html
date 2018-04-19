@@ -1,0 +1,21 @@
+<h1>{{titulo}}</h1>
+<hr/>
+<form #formIngresar= "ngForm" (ngSubmit)= "onSubmit()"class="col-lg-6" id= "formIngresar">
+    <label>Placa</label>
+    <input type= "text" #placa="ngModel" name= "placa" 
+    [(ngModel)]= "vehiculo.placa" class="form-control">
+    <label>Tipo</label>
+    <input type= "text" #tipo="ngModel" name= "tipo" 
+    [(ngModel)]= "vehiculo.tipo" class="form-control">
+    <label>Estado</label>
+    <input type= "text" #estado="ngModel" name= "estado" 
+    [(ngModel)]= "vehiculo.estado"class="form-control">
+    <label>Cilindraje</label>
+    <input type= "text" #cilindraje="ngModel" name= "cilindraje" 
+    [(ngModel)]= "vehiculo.cilindraje"class="form-control">
+    <label>FechaYHoraEntrada</label>
+    <input type= "text" #fechaYHoraEntrada="ngModel" name= "fechaYHoraEntrada" 
+    [(ngModel)]= "vehiculo.fechaYHoraEntrada"class="form-control">
+    <br>
+    <input type="submit" value="{{titulo}}" class="btn btn-success">
+</form>

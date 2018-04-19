@@ -55,7 +55,7 @@ public class VehiculoServiceImpl implements VehiculoService{
 	
 	@Override
 	public Vehiculo consultarVehiculoPorEstado(boolean estado) {
-		return (Vehiculo)vehiculoDao.consultarVehiculoPorEstado(estado);
+		return vehiculoDao.consultarVehiculoPorEstado(estado);
 	}
 	
 	@Override

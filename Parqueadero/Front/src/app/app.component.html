@@ -1,0 +1,27 @@
+<div id = "content" class = "col-lg-10 col-lg-offset-2">
+
+  <header id = "header" class = " col-lg-12"[style.background]="header_color">
+    <h1>
+      {{ title }}
+    </h1>
+  </header> 
+
+  <nav id="nav" class ="col-ms-12">
+    <ul>
+      <li><a [routerLink]="['/paginaPrincipal']" [routerLinkActive] = " ['activado']">Pagina Principal</a></li>
+      <li><a [routerLink]="['/ingresos']" [routerLinkActive] = " ['activado']">Ingresar Vehiculo</a></li>
+      <li><a [routerLink]="['/consultas']" [routerLinkActive] = " ['activado']">Consultar Vehiculo</a></li>
+      <li><a [routerLink]="['/salidas']"  [routerLinkActive] = " ['activado']">Salir Vehiculo</a></li>
+    </ul>
+  </nav> 
+
+  <section id = "main" class = " col-lg-12" >
+    <!--Componente Actual-->
+    <router-outlet></router-outlet>
+  </section>
+
+  <footer id = "footer" class = "col-lg-12">
+    <p>parqueadero</p>
+  </footer>
+
+</div>
