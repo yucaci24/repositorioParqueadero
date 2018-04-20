@@ -9,6 +9,8 @@ import { AppComponent } from './app.component';
 import { IngresarComponent } from './components/ingresar.component';
 import { ConsultarComponent } from './components/consultar.component';
 import { PaginaPrincipalComponent } from './components/paginaPrincipal.component';
+import { SalirComponent } from './components/salir.component';
+import { VehiculoIngresarComponent } from './components/vehiculoIngresar.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { PaginaPrincipalComponent } from './components/paginaPrincipal.component
     AppComponent,
     IngresarComponent,
     PaginaPrincipalComponent,
-    ConsultarComponent
+    ConsultarComponent,
+    SalirComponent,
+    VehiculoIngresarComponent
   ],
   imports: [
     BrowserModule,

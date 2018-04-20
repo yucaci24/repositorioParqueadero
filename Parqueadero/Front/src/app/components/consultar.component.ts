@@ -22,8 +22,8 @@ export class ConsultarComponent{
         
     }
 
-    ngOnInit(){       
-        console.log('se ha cargado el componente ingresar.component.ts')
+   /** ngOnInit(){       
+        console.log('se ha cargado el componente consultar.component.ts')
         this.consultasService.getVehiculos().subscribe(
             result =>{
                 console.log(result);    
@@ -32,5 +32,5 @@ export class ConsultarComponent{
                 console.log(<any>error);
             }
         )
-    }
+    }*/
 }

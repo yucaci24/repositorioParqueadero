@@ -69,6 +69,11 @@
     margin-top: 20px;
 }
 
-#formIngresar label{
+#formIngresarMoto label{
     margin-top:10px;
+}
+
+#formVehiculo {
+    margin-top:40px;
+    align-items: center;
 }

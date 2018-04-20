@@ -1,21 +1,43 @@
-<h1>{{titulo}}</h1>
+<h3>{{titulo}}</h3>
 <hr/>
-<form #formIngresar= "ngForm" (ngSubmit)= "onSubmit()"class="col-lg-6" id= "formIngresar">
-    <label>Placa</label>
-    <input type= "text" #placa="ngModel" name= "placa" 
-    [(ngModel)]= "vehiculo.placa" class="form-control">
-    <label>Tipo</label>
-    <input type= "text" #tipo="ngModel" name= "tipo" 
-    [(ngModel)]= "vehiculo.tipo" class="form-control">
-    <label>Estado</label>
-    <input type= "text" #estado="ngModel" name= "estado" 
-    [(ngModel)]= "vehiculo.estado"class="form-control">
-    <label>Cilindraje</label>
-    <input type= "text" #cilindraje="ngModel" name= "cilindraje" 
-    [(ngModel)]= "vehiculo.cilindraje"class="form-control">
-    <label>FechaYHoraEntrada</label>
-    <input type= "text" #fechaYHoraEntrada="ngModel" name= "fechaYHoraEntrada" 
-    [(ngModel)]= "vehiculo.fechaYHoraEntrada"class="form-control">
-    <br>
-    <input type="submit" value="{{titulo}}" class="btn btn-success">
-</form>
+
+<form #formVehiculo= "ngForm" class="col-lg-6" id= "formVehiculo">
+        <input type="image" class="btn btn-success" height="135" width="135"
+        src="http://todovector.com/vector/medios-de-transporte/terrestres/motos/motos/1.png" 
+        onclick="document.getElementById('formIngresar').style.visibility='visible'">
+        <input type="image" class="btn btn-success" height="135" width="135"
+        src="http://todovector.com/vector/medios-de-transporte/terrestres/autos-y-vehiculos/siluetas-autos/1.png" 
+        onclick="document.getElementById('formIngresar').style.visibility='visible'">
+    
+    <form #formIngresar= "ngForm" (ngSubmit)= "onSubmit()"class="col-lg-6" id= "formIngresar">
+        <label>Placa</label>
+        <input type= "text" #placa="ngModel" name= "placa" maxlength="6"
+        [(ngModel)]= "vehiculo.placa" class="form-control" required>
+        <span *ngIf = "!placa.valid && placa.touched" class="label label-success">
+        Debe ingresar la placa</span>
+        <br>
+
+        <label>Tipo</label>
+        <input type= "text" #tipo="ngModel" name= "tipo" 
+        [(ngModel)]= "vehiculo.tipo" class="form-control">
+
+        <label>Estado</label>
+        <input type= "text" #estado="ngModel" name= "estado" 
+        [(ngModel)]= "vehiculo.estado"class="form-control">
+
+        <label>Cilindraje
+        </label>
+        <input type= "text" #cilindraje="ngModel" name= "cilindraje" 
+        [(ngModel)]= "vehiculo.cilindraje"class="form-control" required pattern="[0-9]+">
+        <span *ngIf = "!cilindraje.valid && cilindraje.touched" >
+        Debe ingresar el cilindraje</span>
+        <br>
+
+        <label>FechaYHoraEntrada</label>
+        <input type= "text" #fechaYHoraEntrada="ngModel" name= "fechaYHoraEntrada" 
+        [(ngModel)]= "vehiculo.fechaYHoraEntrada"class="form-control">
+
+        <br>
+        <input type="submit" value="{{titulo}}"  [disabled]= "!formIngresar.form.valid" class="btn btn-success">
+    </form>
+</form>    

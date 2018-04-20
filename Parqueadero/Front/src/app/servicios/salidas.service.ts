@@ -6,15 +6,11 @@ import { GLOBAL } from './global';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ConsultasService {
+export class SalidasService {
 
     public url;
 
     constructor (public http: Http){
         this.url= GLOBAL.url;
     }
-
-/**    getVehiculos(){
-        return this.http.get(this.url+'consultas/').map(res => res.json());
-    }*/
 }
