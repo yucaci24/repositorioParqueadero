@@ -13,16 +13,11 @@ export class IngresosService{
         this.url= GLOBAL.url;
     }
 
-   /** getVehiculos(){
-        return this.http.get(this.url+'consultas/').map(res => res.json());
-    }*/
-
     addVehiculo(vehiculo: Vehiculo){
         let json = JSON.stringify(vehiculo);
-        let params = 'json=' +json;
-        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
-
-       return this.http.post(this.url+'ingresos', params,{headers: headers})
-       .map(res => res.json());
+        let headers = new Headers({'Content-Type': 'application/json'});
+        var response = this.http.post(this.url + 'ingresos', json, { headers: headers});
+        console.log(response);
+        return response.map(x => x.json());
     }
 }

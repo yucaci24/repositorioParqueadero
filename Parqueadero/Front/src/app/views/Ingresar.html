@@ -33,11 +33,6 @@
         Debe ingresar el cilindraje</span>
         <br>
 
-        <label>FechaYHoraEntrada</label>
-        <input type= "text" #fechaYHoraEntrada="ngModel" name= "fechaYHoraEntrada" 
-        [(ngModel)]= "vehiculo.fechaYHoraEntrada"class="form-control">
-
-        <br>
         <input type="submit" value="{{titulo}}"  [disabled]= "!formIngresar.form.valid" class="btn btn-success">
     </form>
 </form>    

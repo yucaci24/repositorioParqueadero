@@ -29,9 +29,12 @@ public class DataBaseConfiration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource() ;
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/parqueaderoCeiba");
-		dataSource.setUsername("parqueaderoCeiba");
-		dataSource.setPassword("v2bkwpkiwXm1L5DD");
+	//	dataSource.setUrl("jdbc:mysql://localhost:3306/parqueaderoCeiba");
+	//	dataSource.setUsername("parqueaderoCeiba");
+	//	dataSource.setPassword("v2bkwpkiwXm1L5DD");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/parqueaderoCeibaCasa");
+		dataSource.setUsername("nathally");
+		dataSource.setPassword("hH7VNKu0seLuCZAD");
 		return dataSource;
 	}
 	

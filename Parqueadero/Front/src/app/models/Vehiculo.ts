@@ -3,7 +3,6 @@ export class Vehiculo {
     public placa: string,
     public tipo: number,
     public estado: boolean,
-    public cilindraje: number,
-    public fechaYHoraEntrada: Date,)
+    public cilindraje: number,)
     {}
 }

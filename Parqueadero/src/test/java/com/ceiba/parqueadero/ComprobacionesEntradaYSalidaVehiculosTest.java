@@ -101,17 +101,35 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	}
 	
 	@Test
-	public void validarIngresoVehiculo() {
+	public void validarIngresoVehiculoConInicialANoDomingo() {
 		//Arrange
 		String placa = "ABCD324";
-		Date fecha = Calendar.getInstance().getTime();
+		Calendar fecha = Calendar.getInstance();
+		fecha.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+		Date dia = fecha.getTime();
 		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
 		
 		//Act
-		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, fecha);
+		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, dia);
 		
 		//Assert
 		assertFalse( puedeIngresar );
+	}
+	
+	@Test
+	public void validarIngresoVehiculoConInicialADomingo() {
+		//Arrange
+		String placa = "ABCD324";
+		Calendar fecha = Calendar.getInstance();
+		fecha.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+		Date dia = fecha.getTime();
+		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		
+		//Act
+		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, dia);
+		
+		//Assert
+		assertTrue( puedeIngresar );
 	}
 
 	@Test
