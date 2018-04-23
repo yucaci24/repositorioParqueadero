@@ -41,8 +41,8 @@ public class VehiculoServiceImpl implements VehiculoService{
 	@Override
 	public long salirVehiculo(Vehiculo vehiculo) {
 		CalculadoraCobro calculadoraC = new CalculadoraCobro();
-		
 		long valorTotal = calculadoraC.calcularValorSalidaTotal(vehiculo);
+		vehiculo.setCobro(valorTotal);
 		vehiculoDao.salirVehiculo(vehiculo);
 		System.out.println("el cobro es: "+valorTotal);
 		return valorTotal;

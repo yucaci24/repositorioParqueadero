@@ -4,6 +4,7 @@ export class Vehiculo {
     public tipo: number,
     public estado: boolean,
     public cilindraje: number,
-    public fechaYHoraEntrada: Date)
+    public fechaYHoraEntrada: Date,
+    public cobro: number)
     {}
 }

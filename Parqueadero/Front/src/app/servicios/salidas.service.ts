@@ -9,15 +9,18 @@ import 'rxjs/add/operator/map';
 export class SalidasService {
 
     public url;
+    public placa: String;
+    public estado: JSON;
+    
 
     constructor (public http: Http){
         this.url= GLOBAL.url;
     }
 
-    patchVehiculo(vehiculo: Vehiculo){
-        let json = JSON.stringify(vehiculo);
+    patchVehiculo(placa ){
+        let json = JSON.stringify(placa);
         let headers = new Headers({'Content-Type': 'application/json'});
-        var response = this.http.patch(this.url + 'salidas', json, { headers: headers});
+        var response = this.http.patch(this.url+'salidas/'+ placa, json, { headers: headers});
         console.log(response);
         return response.map(x => x.json());
     }

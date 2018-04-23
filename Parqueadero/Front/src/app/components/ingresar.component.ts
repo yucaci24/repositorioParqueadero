@@ -14,24 +14,28 @@ export class IngresarComponent{
     public vehiculo: Vehiculo;
 
     constructor(
-        private _ingresosService: IngresosService,
-        private _route: ActivatedRoute,
-        private _router: Router
+        private ingresosService: IngresosService,
+        private route: ActivatedRoute,
+        private router: Router
     ){
         this.titulo='Ingresar Vehiculo';
-        this.vehiculo = new Vehiculo( '', 0, true, 0, null);
+        this.vehiculo = new Vehiculo( '', 0, true, 0, null, 0);
     }
-
+    
     ngOnInit(){       
         console.log('se ha cargado el componente ingresar.component.ts') 
     }
 
+    mayus(e) {
+        e.value = e.value.toUpperCase();
+    }
+
     onSubmit(){
         console.log(this.vehiculo);
-        this._ingresosService.addVehiculo(this.vehiculo).subscribe( 
+        this.ingresosService.addVehiculo(this.vehiculo).subscribe( 
             response => {
                 if (response.code == 200){
-                    this._router.navigate(['/paginaPrincipal']);
+                    this.router.navigate(['/paginaPrincipal']);
                 }else{
                     console.log(response);
                 }
@@ -42,8 +46,9 @@ export class IngresarComponent{
         )
     }
 
-    onclick(){
-        
+    onSubmitVehiculo(){
+        this.vehiculo = new Vehiculo( '', 1, true, 0, null, 0);
     }
 
+    
 }

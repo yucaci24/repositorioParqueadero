@@ -38,6 +38,9 @@ public class Vehiculo implements Serializable{
 	@Column (name="estado")
 	public boolean estado;
 	
+	@Column (name="cobro")
+	public long cobro;
+	
 	public Vehiculo() {
 		super();
 	}
@@ -95,5 +98,13 @@ public class Vehiculo implements Serializable{
 
 	public void setEstado(boolean estado) {
 		this.estado = estado;
+	}
+	
+	public long isCobro() {
+		return cobro;
+	}
+	
+	public void setCobro (long cobro) {
+		this.cobro = cobro;
 	}
 }

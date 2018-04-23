@@ -13,33 +13,32 @@ import { SalidasService } from '../servicios/salidas.service';
 export class SalirComponent{
     public titulo: string;
     public vehiculo: Vehiculo;
+    public vehiculos: Vehiculo[];
+    
 
     constructor(
-        private _salidasService: SalidasService,
-        private _route: ActivatedRoute,
-        private _router: Router
+        private salidasService: SalidasService,
+        private route: ActivatedRoute,
+        private router: Router
     ){
-        this.titulo='Ingresar Vehiculo';
-        this.vehiculo = new Vehiculo( '', 0, false, 0);
+        this.titulo='Salida De Vehiculos';
+        this.vehiculo = new Vehiculo( '', 0, false, 0, null, 0);
     }
 
     ngOnInit(){       
         console.log('se ha cargado el componente salir.component.ts') 
     }
 
-    /**onSubmit(){
-        console.log(this.vehiculo);
-        this._salidasService.patchVehiculo(this.vehiculo).subscribe( 
-            response => {
-                if (response.code == 200){
-                    this._router.navigate(['/paginaPrincipal']);
-                }else{
-                    console.log(response);
-                }
-            },
+    onSubmit(){
+        this.salidasService.patchVehiculo(this.vehiculo.placa).subscribe(
+            result => {
+                console.log(result);
+                this.vehiculos=[result];
+            }, 
             error => {
                 console.log(<any>error);
             }
         )
-    }*/
+        
+    }
 }

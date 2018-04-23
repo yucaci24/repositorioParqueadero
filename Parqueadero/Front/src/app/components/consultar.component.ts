@@ -20,7 +20,7 @@ export class ConsultarComponent{
         private consultasService: ConsultasService
     ){
         this.titulo='Consultar Vehiculo';
-        this.vehiculo = new Vehiculo( '', 0, true, 0, null);
+        this.vehiculo = new Vehiculo( '', 0, true, 0, null, 0);
     }
 
     ngOnInit(){       

@@ -1,4 +1,4 @@
-<h1>{{titulo}}</h1>
+<h3>{{titulo}}</h3>
  <hr/>
 <form #formConsultar = "ngForm" class="col-lg-6" id= "formConsultar" (ngSubmit)= "onSubmit ()">
         <label>Placa</label>
@@ -16,13 +16,13 @@
 </form>
 <table *ngFor="let res of vehiculos"  class="table">
         <tr>
-                <td>placa</td>
-                <td>estado</td>
-                <td>cilindraje</td>
-                <td>fecha</td>
+                <td>Placa</td>
+                <td>Estado</td>
+                <td>Cilindraje</td>
+                <td>Fecha</td>
         </tr>
         <tr>
-                <td>{{res.placa}}</td>
+                <td>{{res.placa | uppercase}}</td>
                 <td>{{res.estado}}</td>
                 <td>{{res.cilindraje}}</td>
                 <td>{{res.fechaYHoraEntrada | date: 'medium'}}</td>

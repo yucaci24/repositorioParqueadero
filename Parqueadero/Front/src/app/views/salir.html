@@ -1,15 +1,36 @@
-<h1>{{titulo}}</h1>
+<h3>{{titulo}}</h3>
  <hr/>
- <form #formSalir = "ngForm" class="col-lg-6" id= "formSalir">
+ <form #formSalir = "ngForm" class="col-lg-6" id= "formSalir" (ngSubmit)= "onSubmit ()">
         <label>Placa</label>
         <input  type= "text" #placa="ngModel" name= "placa" 
         [(ngModel)]= "vehiculo.placa" class="form-control" maxlength="6" required> 
         <span *ngIf = "!placa.valid && placa.touched" class="label label-success">
         Debe ingresar la placa</span>
         <br>
+        <br>
         <label>Estado</label>
         <input type= "text" #estado="ngModel" name= "estado" value="false" disabled
         [(ngModel)]= "vehiculo.estado"class="form-control">
         <br>
-        <input type= "submit" value= "{{titulo}}" class="btn btn-success">
+        <br>
+        <input type= "submit" value= "{{titulo}}" class="btn btn-success"
+        [disabled]= "!formSalir.form.valid">
 </form>
+<br>
+<br>
+<table *ngFor="let res of vehiculos"  class="table">
+        <tr>
+                <td>Placa</td>
+                <td>Estado</td>
+                <td>Cilindraje</td>
+                <td>Fecha</td>
+                <td>Cobro</td>
+        </tr>
+        <tr>
+                <td>{{res.placa}}</td>
+                <td>{{res.estado}}</td>
+                <td>{{res.cilindraje}}</td>
+                <td>{{res.fechaYHoraEntrada | date: 'medium'}}</td>
+                <td>{{res.cobro}}</td>
+        </tr>
+</table> 
