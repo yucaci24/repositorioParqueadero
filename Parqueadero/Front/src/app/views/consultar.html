@@ -1,8 +1,28 @@
 <h1>{{titulo}}</h1>
  <hr/>
-<form #formConsultar = "ngForm" class="col-lg-6" id= "formConsultar">
+<form #formConsultar = "ngForm" class="col-lg-6" id= "formConsultar" (ngSubmit)= "onSubmit ()">
         <label>Placa</label>
-        <input type= "text" class="form-control">
+        <input  type= "text" #placa="ngModel" name= "placa" 
+        [(ngModel)]= "vehiculo.placa" class="form-control" maxlength="6" required> 
+        <span *ngIf = "!placa.valid && placa.touched" class="label label-success">
+        Debe ingresar la placa</span>
         <br>
-        <input type= "submit" value= "{{titulo}}" class="btn btn-success">
+        <br>
+        <input type= "submit" value= "{{titulo}}" [disabled]= "!formConsultar.form.valid" class="btn btn-success" >
+        <br>
+        <br>        
+        <input type="text" #result="ngModel" name="resultado"
+        [(ngModel)]= "vehiculo.id" class="form-control" >
+        <br>
+        <br>        
+        <input type="text" #result="ngModel" name="resultado"
+        [(ngModel)]= "vehiculo.estado" class="form-control" >
+        <br>
+        <br>        
+        <input type="text" #result="ngModel" name="resultado"
+        [(ngModel)]= "vehiculo.tipo" class="form-control" >
+        <br>
+        <br>        
+        <input type="text" #result="ngModel" name="resultado"
+        [(ngModel)]= "vehiculo.cilindraje" class="form-control" >
 </form>

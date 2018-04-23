@@ -9,7 +9,7 @@
         src="http://todovector.com/vector/medios-de-transporte/terrestres/autos-y-vehiculos/siluetas-autos/1.png" 
         onclick="document.getElementById('formIngresar').style.visibility='visible'">
     
-    <form #formIngresar= "ngForm" (ngSubmit)= "onSubmit()"class="col-lg-6" id= "formIngresar">
+    <form #formIngresar= "ngForm" (ngSubmit)= "onSubmit()" class="col-lg-6" id= "formIngresar">
         <label>Placa</label>
         <input type= "text" #placa="ngModel" name= "placa" maxlength="6"
         [(ngModel)]= "vehiculo.placa" class="form-control" required>

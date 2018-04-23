@@ -10,7 +10,7 @@ import { Vehiculo } from '../models/Vehiculo';
 })
 
 export class ConsultarComponent{
-    public titulo: string;
+    public titulo: String;
     public vehiculo: Vehiculo;
 
     constructor(
@@ -19,18 +19,22 @@ export class ConsultarComponent{
         private consultasService: ConsultasService
     ){
         this.titulo='Consultar Vehiculo';
-        
+        this.vehiculo = new Vehiculo( '', 0, true, 0);
     }
 
-   /** ngOnInit(){       
+    ngOnInit(){       
         console.log('se ha cargado el componente consultar.component.ts')
-        this.consultasService.getVehiculos().subscribe(
-            result =>{
-                console.log(result);    
-            },
-            error =>{
+    }
+
+    onSubmit(){
+        this.consultasService.getVehiculo(this.vehiculo.placa).subscribe(
+            result => {
+                console.log(result);
+            }, 
+            error => {
                 console.log(<any>error);
             }
         )
-    }*/
+        
+    }
 }

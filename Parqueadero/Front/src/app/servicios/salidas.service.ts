@@ -13,4 +13,12 @@ export class SalidasService {
     constructor (public http: Http){
         this.url= GLOBAL.url;
     }
+
+    patchVehiculo(vehiculo: Vehiculo){
+        let json = JSON.stringify(vehiculo);
+        let headers = new Headers({'Content-Type': 'application/json'});
+        var response = this.http.patch(this.url + 'salidas', json, { headers: headers});
+        console.log(response);
+        return response.map(x => x.json());
+    }
 }

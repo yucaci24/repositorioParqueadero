@@ -8,16 +8,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ConsultasService {
     public url;
+    public placa: String;
 
     constructor (public http: Http){
         this.url= GLOBAL.url;
     }
 
-    getVehiculo(vehiculo: Vehiculo){
-        let json = JSON.stringify(vehiculo);
-        let headers = new Headers({'Content-Type': 'application/json'});
-        var response = this.http.get(this.url + 'consultas', json);
-        console.log(response);
-        return response.map(x => x.json());
+    getVehiculo(placa){
+        return this.http.get(this.url+'consultas/'+ placa).map(res => res.json());
+       
     }
 }
