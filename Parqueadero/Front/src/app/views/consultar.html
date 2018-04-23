@@ -8,21 +8,23 @@
         Debe ingresar la placa</span>
         <br>
         <br>
-        <input type= "submit" value= "{{titulo}}" [disabled]= "!formConsultar.form.valid" class="btn btn-success" >
+        <input type= "submit" value= "{{titulo}}" 
+        [disabled]= "!formConsultar.form.valid" class="btn btn-success" >
         <br>
-        <br>        
-        <input type="text" #result="ngModel" name="resultado"
-        [(ngModel)]= "vehiculo.id" class="form-control" >
         <br>
-        <br>        
-        <input type="text" #result="ngModel" name="resultado"
-        [(ngModel)]= "vehiculo.estado" class="form-control" >
-        <br>
-        <br>        
-        <input type="text" #result="ngModel" name="resultado"
-        [(ngModel)]= "vehiculo.tipo" class="form-control" >
-        <br>
-        <br>        
-        <input type="text" #result="ngModel" name="resultado"
-        [(ngModel)]= "vehiculo.cilindraje" class="form-control" >
+               
 </form>
+<table *ngFor="let res of vehiculos"  class="table">
+        <tr>
+                <td>placa</td>
+                <td>estado</td>
+                <td>cilindraje</td>
+                <td>fecha</td>
+        </tr>
+        <tr>
+                <td>{{res.placa}}</td>
+                <td>{{res.estado}}</td>
+                <td>{{res.cilindraje}}</td>
+                <td>{{res.fechaYHoraEntrada | date: 'medium'}}</td>
+        </tr>
+</table> 

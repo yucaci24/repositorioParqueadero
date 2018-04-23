@@ -12,6 +12,7 @@ import { Vehiculo } from '../models/Vehiculo';
 export class ConsultarComponent{
     public titulo: String;
     public vehiculo: Vehiculo;
+    public vehiculos: Vehiculo[];
 
     constructor(
         private route: ActivatedRoute,
@@ -19,7 +20,7 @@ export class ConsultarComponent{
         private consultasService: ConsultasService
     ){
         this.titulo='Consultar Vehiculo';
-        this.vehiculo = new Vehiculo( '', 0, true, 0);
+        this.vehiculo = new Vehiculo( '', 0, true, 0, null);
     }
 
     ngOnInit(){       
@@ -30,6 +31,7 @@ export class ConsultarComponent{
         this.consultasService.getVehiculo(this.vehiculo.placa).subscribe(
             result => {
                 console.log(result);
+                this.vehiculos=[result];
             }, 
             error => {
                 console.log(<any>error);

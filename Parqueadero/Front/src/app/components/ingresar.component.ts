@@ -19,7 +19,7 @@ export class IngresarComponent{
         private _router: Router
     ){
         this.titulo='Ingresar Vehiculo';
-        this.vehiculo = new Vehiculo( '', 0, true, 0);
+        this.vehiculo = new Vehiculo( '', 0, true, 0, null);
     }
 
     ngOnInit(){       
