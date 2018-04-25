@@ -8,7 +8,7 @@
         id="carro" >    
         <input type="image" class="btn btn-success" height="135" width="135"
         src="http://todovector.com/vector/medios-de-transporte/terrestres/motos/motos/1.png" 
-        onclick="document.getElementById('tipo').value='2', document.getElementById('formIngresar').style.visibility='visible'" 
+        onclick="document.getElementById('tipo').value='2', document.getElementById('formIngresar').style.visibility='visible', document.getElementById('cilindraje').ng.disabled='false'" 
         id="moto">
         
     <form #formIngresar= "ngForm" (ngSubmit)= "onSubmit();" class="col-lg-6" id= "formIngresar" style="visibility: hidden;" >
