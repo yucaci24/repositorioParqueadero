@@ -69,19 +69,26 @@
     margin-top: 20px;
 }
 
-#formIngresarMoto{
+#formInbgresarVehiculoMoto{
     float: left;
 }
 
+#formInbgresarVehiculoCarro{
+    float: left;
+}
+
+#formIngresarMoto{
+    float: none;
+}
+
 #formIngresarCarro{
-    float: right;
+    float: none;
 }
 
 #formIngresarMoto label{
     margin-top:10px;
 }
 
-#formVehiculo {
-    margin-top:40px;
-    align-items: center;
+#formIngresarCarro label{
+    margin-top:10px;
 }

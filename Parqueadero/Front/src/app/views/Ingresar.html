@@ -3,13 +3,15 @@
 
 <form #formVehiculo= "ngForm" class="col-lg-6" id= "formVehiculo">
         <input type="image" class="btn btn-success" height="135" width="135"
-        src="http://todovector.com/vector/medios-de-transporte/terrestres/motos/motos/1.png" 
-        onclick="document.getElementById('formIngresar').style.visibility='visible'" id="moto">
-        <input type="image" class="btn btn-success" height="135" width="135"
         src="http://todovector.com/vector/medios-de-transporte/terrestres/autos-y-vehiculos/siluetas-autos/1.png" 
-        onclick="document.getElementById('formIngresar').style.visibility='visible'" id="carro" >
-    
-    <form #formIngresar= "ngForm" (ngSubmit)= "onSubmit();" class="col-lg-6" id= "formIngresar" style="visibility:hidden" >
+        onclick="document.getElementById('tipo').value='1', document.getElementById('cilindraje').disabled='true', document.getElementById('formIngresar').style.visibility='visible'"
+        id="carro" >    
+        <input type="image" class="btn btn-success" height="135" width="135"
+        src="http://todovector.com/vector/medios-de-transporte/terrestres/motos/motos/1.png" 
+        onclick="document.getElementById('tipo').value='2', document.getElementById('formIngresar').style.visibility='visible'" 
+        id="moto">
+        
+    <form #formIngresar= "ngForm" (ngSubmit)= "onSubmit();" class="col-lg-6" id= "formIngresar" style="visibility: hidden;" >
         <label>Placa</label>
         <input type= "text" #placa="ngModel" name= "placa" maxlength="6"
         [(ngModel)]= "vehiculo.placa" class="form-control" required >
@@ -18,7 +20,7 @@
         <br>
 
         <label>Tipo</label>
-        <input type= "text" #tipo="ngModel" name= "tipo" disabled
+        <input type= "text" #tipo="ngModel" name= "tipo" disabled id="tipo"
         [(ngModel)]= "vehiculo.tipo" class="form-control">
 
         <label>Estado</label>
@@ -27,7 +29,7 @@
 
         <label>Cilindraje
         </label>
-        <input type= "text" #cilindraje="ngModel" name= "cilindraje" 
+        <input type= "text" #cilindraje="ngModel" name= "cilindraje" id="cilindraje"
         [(ngModel)]= "vehiculo.cilindraje"class="form-control" required pattern="[0-9]+">
         <span *ngIf = "!cilindraje.valid && cilindraje.touched" >
         Debe ingresar el cilindraje</span>

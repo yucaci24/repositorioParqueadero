@@ -45,10 +45,4 @@ export class IngresarComponent{
             }
         )
     }
-
-    onSubmitVehiculo(){
-        this.vehiculo = new Vehiculo( '', 1, true, 0, null, 0);
-    }
-
-    
 }
