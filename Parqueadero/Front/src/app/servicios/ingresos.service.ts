@@ -17,6 +17,6 @@ export class IngresosService{
         let json = JSON.stringify(vehiculo);
         let headers = new Headers({'Content-Type': 'application/json'});
         var response = this.http.post(this.url + 'ingresos', json, { headers: headers});
-        return response.map(x => x.json());
+        return response;
     }
 }

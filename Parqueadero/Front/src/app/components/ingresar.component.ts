@@ -35,13 +35,10 @@ export class IngresarComponent{
         console.log(this.vehiculo);
         this.ingresosService.addVehiculo(this.vehiculo).subscribe( 
             response => {
-                console.log(response.code);
-                if (response.code == 201){
+                
                     alert("Vehiculo Ingresado");
                     this.router.navigate(['/paginaPrincipal']);
-                }else{
-                    alert("Vehiculo Ingresado");
-                }
+                
             },
             error => {
                 console.log(<any>error);

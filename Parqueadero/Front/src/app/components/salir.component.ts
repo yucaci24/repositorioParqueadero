@@ -32,6 +32,7 @@ export class SalirComponent{
     onSubmit(){
         this.salidasService.patchVehiculo(this.vehiculo.placa).subscribe(
             result => {
+                alert("El Vehiculo Ha Salido");
                 console.log(result);
                 this.vehiculos=[result];
             }, 

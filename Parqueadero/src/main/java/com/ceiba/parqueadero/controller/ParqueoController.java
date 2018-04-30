@@ -43,18 +43,14 @@ public class ParqueoController {
 	
 	
 	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.PATCH, headers = "Accept=application/json")
-	public ResponseEntity<?> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo) {
-		
+	public ResponseEntity<Vehiculo> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo) {
 		Vehiculo vehiculoFuera = vehiculoService.consultarVehiculoPorPlaca(placa);
-		if (vehiculoFuera==null) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
 		vehiculoFuera.setEstado(vehiculo.isEstado());
 		try {
 			vehiculoService.salirVehiculo(vehiculoFuera);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			return new ResponseEntity<Vehiculo>(e.getMessage(), HttpStatus.NO_CONTENT);
+			e.printStackTrace();
 		}
 	return new ResponseEntity<Vehiculo>(vehiculoFuera, HttpStatus.OK);
 	}

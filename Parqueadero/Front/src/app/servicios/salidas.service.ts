@@ -21,7 +21,6 @@ export class SalidasService {
         let json = JSON.stringify(placa);
         let headers = new Headers({'Content-Type': 'application/json'});
         var response = this.http.patch(this.url+'salidas/'+ placa, json, { headers: headers});
-        console.log(response);
         return response.map(x => x.json());
     }
 }
