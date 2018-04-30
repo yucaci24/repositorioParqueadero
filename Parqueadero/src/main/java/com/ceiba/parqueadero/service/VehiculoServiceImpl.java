@@ -4,6 +4,8 @@ import java.util.Date;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ceiba.parqueadero.dao.VehiculoDao;
@@ -30,6 +32,10 @@ public class VehiculoServiceImpl implements VehiculoService{
 			throw new Exception("No hay celdas Disponibles");
 		}
 		
+		if (vehiculo.getPlaca()==(null) || vehiculo.getPlaca().isEmpty() ) {
+			throw new Exception("Debe ingresar una placa");
+		}
+		
 		if(!validaciones.validoIngresarVehiculo(vehiculo.getPlaca(), date) ) {
 			throw new Exception("No puede ingresar");
 		}
@@ -39,10 +45,16 @@ public class VehiculoServiceImpl implements VehiculoService{
 	}
 	
 	@Override
-	public long salirVehiculo(Vehiculo vehiculo) {
+	public long salirVehiculo(Vehiculo vehiculo) throws Exception {
 		CalculadoraCobro calculadoraC = new CalculadoraCobro();
 		long valorTotal = calculadoraC.calcularValorSalidaTotal(vehiculo);
 		vehiculo.setCobro(valorTotal);
+		if (vehiculo.getPlaca() == null) {
+			throw new Exception("Debe ingresar una placa");
+		}
+		if (vehiculoDao.consultarVehiculoPorPlaca(vehiculo.getPlaca())==null) {
+			throw new Exception("El Vehiculo No Esta En El Parqueadero");
+		}
 		vehiculoDao.salirVehiculo(vehiculo);
 		System.out.println("el cobro es: "+valorTotal);
 		return valorTotal;

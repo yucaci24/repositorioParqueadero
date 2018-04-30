@@ -19,27 +19,13 @@ import com.ceiba.parqueadero.service.VehiculoService;
 @CrossOrigin(origins = "http://localhost:4200")
 @Controller
 @RequestMapping("/")
-public class VehiculoController {
+public class ParqueoController {
 	
 	@Autowired
 	public VehiculoService vehiculoService;
 	
-	@RequestMapping (value = "/b")
-	@ResponseBody
-	public String index() {
-		String response = ("Bienvenido a  parqueadero :D");
-		return response;
-	}
-	
 	@RequestMapping(value = "/ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder, boolean estado){
-		if (vehiculo.getPlaca()==(null) || vehiculo.getPlaca().isEmpty() ) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
-		
-		if ((vehiculoService.consultarVehiculoPorPlaca(vehiculo.getPlaca())!= null)) {
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}
 		
 		try {
 			vehiculoService.ingresarVehiculo(vehiculo);
@@ -47,11 +33,9 @@ public class VehiculoController {
 			return new ResponseEntity<String>(e.getMessage(), HttpStatus.FORBIDDEN);
 		}
 		
-		
-		Vehiculo vehiculo2 = vehiculoService.consultarVehiculoPorPlaca(vehiculo.getPlaca());
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(
-				uriComponentsBuilder.path("/n1/ingresos/{id}")
+				uriComponentsBuilder.path("/ingresos/{id}")
 				.buildAndExpand(vehiculo.getPlaca())
 				.toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
@@ -59,16 +43,19 @@ public class VehiculoController {
 	
 	
 	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.PATCH, headers = "Accept=application/json")
-	public ResponseEntity<Vehiculo> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo) {
-		if (placa == null) {
-			return new ResponseEntity(HttpStatus.NOT_FOUND);
-		}
+	public ResponseEntity<?> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo) {
+		
 		Vehiculo vehiculoFuera = vehiculoService.consultarVehiculoPorPlaca(placa);
 		if (vehiculoFuera==null) {
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
 		}
 		vehiculoFuera.setEstado(vehiculo.isEstado());
-		vehiculoService.salirVehiculo(vehiculoFuera);
+		try {
+			vehiculoService.salirVehiculo(vehiculoFuera);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			return new ResponseEntity<Vehiculo>(e.getMessage(), HttpStatus.NO_CONTENT);
+		}
 	return new ResponseEntity<Vehiculo>(vehiculoFuera, HttpStatus.OK);
 	}
 	
