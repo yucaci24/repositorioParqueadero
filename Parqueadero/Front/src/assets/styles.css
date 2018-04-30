@@ -69,26 +69,14 @@
     margin-top: 20px;
 }
 
-#formInbgresarVehiculoMoto{
-    float: left;
+#formIngresar input {
+    text-transform: uppercase;
 }
 
-#formInbgresarVehiculoCarro{
-    float: left;
+#formSalir input {
+    text-transform: uppercase;
 }
 
-#formIngresarMoto{
-    float: none;
-}
-
-#formIngresarCarro{
-    float: none;
-}
-
-#formIngresarMoto label{
-    margin-top:10px;
-}
-
-#formIngresarCarro label{
-    margin-top:10px;
+#formConsultar input {
+    text-transform: uppercase;
 }

@@ -12,6 +12,7 @@ import { IngresosService } from '../servicios/ingresos.service';
 export class IngresarComponent{
     public titulo: string;
     public vehiculo: Vehiculo;
+    public deshabilitarCilindraje : boolean = false;
 
     constructor(
         private ingresosService: IngresosService,
@@ -19,7 +20,7 @@ export class IngresarComponent{
         private router: Router
     ){
         this.titulo='Ingresar Vehiculo';
-        this.vehiculo = new Vehiculo( '', 0, true, 0, null, 0);
+        this.vehiculo = new Vehiculo( '', null, true, 0, null, 0);
     }
     
     ngOnInit(){       
@@ -34,15 +35,26 @@ export class IngresarComponent{
         console.log(this.vehiculo);
         this.ingresosService.addVehiculo(this.vehiculo).subscribe( 
             response => {
-                if (response.code == 200){
+                console.log(response.code);
+                if (response.code == 201){
+                    alert("Vehiculo Ingresado");
                     this.router.navigate(['/paginaPrincipal']);
                 }else{
-                    console.log(response);
+                    alert("Vehiculo Ingresado");
                 }
             },
             error => {
                 console.log(<any>error);
             }
         )
+    }
+
+    onChangeTypeVehicle(type:number){
+        this.vehiculo.tipo = type;
+        if( type === 1 ){
+            this.deshabilitarCilindraje = true;
+        }else{
+            this.deshabilitarCilindraje = false;
+        }
     }
 }
