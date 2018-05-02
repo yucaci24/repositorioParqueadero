@@ -8,10 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="parqueo")
+@Table(name="vehiculo")
 
 public class Vehiculo implements Serializable{
 
@@ -26,20 +27,8 @@ public class Vehiculo implements Serializable{
 	@Column (name="placa")
 	public String placa;
 	
-	@Column (name="tipo_de_vehiculo", nullable= true)
-	public int tipo;
-	
 	@Column (name="cilindraje", nullable= true)
 	public int cilindraje;
-	
-	@Column (name="fecha_y_hora_entrada")
-	public Date fechaYHoraEntrada;
-	
-	@Column (name="estado")
-	public boolean estado;
-	
-	@Column (name="cobro")
-	public long cobro;
 	
 	public Vehiculo() {
 		super();
@@ -76,35 +65,4 @@ public class Vehiculo implements Serializable{
 		this.cilindraje = cilindraje;
 	}
 
-	public Date getFechaYHoraEntrada() {
-		return fechaYHoraEntrada;
-	}
-
-	public void setFechaYHoraEntrada(Date fechaYHoraEntrada) {
-		this.fechaYHoraEntrada = fechaYHoraEntrada;
-	}
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-
-	public boolean isEstado() {
-		return estado;
-	}
-
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
-	
-	public long isCobro() {
-		return cobro;
-	}
-	
-	public void setCobro (long cobro) {
-		this.cobro = cobro;
-	}
 }

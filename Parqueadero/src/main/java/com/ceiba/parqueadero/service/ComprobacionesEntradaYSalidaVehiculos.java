@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ceiba.parqueadero.dao.RegistrosParqueaderoDao;
 import com.ceiba.parqueadero.dao.VehiculoDao;
 
 @Service
@@ -16,7 +17,7 @@ import com.ceiba.parqueadero.dao.VehiculoDao;
 public class ComprobacionesEntradaYSalidaVehiculos {
 
 		@Autowired
-		public VehiculoDao vehiculoDao;
+		public RegistrosParqueaderoDao registrosParqueaderoDao;
 		
 		public boolean tipoVehiculo (int tipo) {
 			return tipo == TipoVehiculo.CARRO.getTipoVehiculo();
@@ -35,9 +36,9 @@ public class ComprobacionesEntradaYSalidaVehiculos {
 		public boolean consultarCantidadCeldas(int tipoVehiculo) {
 			boolean hayEspacio = false;
 			if( tipoVehiculo == TipoVehiculo.CARRO.getTipoVehiculo() ) {
-				hayEspacio = vehiculoDao.consultarCantidadCeldas( tipoVehiculo ) < ParametrosParqueadero.CELDAS_CARROS;
+				hayEspacio = registrosParqueaderoDao.consultarCantidadCeldas( tipoVehiculo ) < ParametrosParqueadero.CELDAS_CARROS;
 			}else {
-				hayEspacio = vehiculoDao.consultarCantidadCeldas( tipoVehiculo ) < ParametrosParqueadero.CELDAS_MOTOS;		
+				hayEspacio = registrosParqueaderoDao.consultarCantidadCeldas( tipoVehiculo ) < ParametrosParqueadero.CELDAS_MOTOS;		
 			}
 			return hayEspacio;
 			

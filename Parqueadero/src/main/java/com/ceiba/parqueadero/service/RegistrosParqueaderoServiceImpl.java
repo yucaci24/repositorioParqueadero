@@ -8,15 +8,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.ceiba.parqueadero.dao.RegistrosParqueaderoDao;
 import com.ceiba.parqueadero.dao.VehiculoDao;
+import com.ceiba.parqueadero.model.RegistrosParqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
 
 @Service("vehiculoService")
 @Transactional
-public class VehiculoServiceImpl implements VehiculoService{
+public class RegistrosParqueaderoServiceImpl implements RegistrosParqueaderoService{
 
 	@Autowired
 	public VehiculoDao vehiculoDao;
+	
+	@Autowired
+	public RegistrosParqueaderoDao registrosParqueaderoDao;
 	
 	@Autowired
 	public ComprobacionesEntradaYSalidaVehiculos validaciones;
@@ -25,15 +30,15 @@ public class VehiculoServiceImpl implements VehiculoService{
 	
 
 	@Override
-	public void ingresarVehiculo(Vehiculo vehiculo) throws Exception {
+	public void ingresarVehiculo(RegistrosParqueadero registro, Vehiculo vehiculo) throws Exception {
 		Date date = new Date();
-		
-		if (!validaciones.consultarCantidadCeldas( vehiculo.getTipo() )) {
+	
+		if (!validaciones.consultarCantidadCeldas( registro.getTipo() )) {
 			throw new Exception("No hay celdas Disponibles");
 		}
 		
-		if (vehiculo.getPlaca()==(null) || vehiculo.getPlaca().isEmpty() ) {
-			throw new Exception("Debe ingresar una placa");
+		if (vehiculo.getPlaca()==(null) ||vehiculo.getPlaca().isEmpty() ) {
+		throw new Exception("Debe ingresar una placa");
 		}
 		
 		if(!validaciones.validoIngresarVehiculo(vehiculo.getPlaca(), date) ) {
@@ -41,14 +46,17 @@ public class VehiculoServiceImpl implements VehiculoService{
 		}
 		
 		vehiculoDao.ingresarVehiculo(vehiculo);
+		registrosParqueaderoDao.ingresarVehiculo(registro);
 		
 	}
 	
 	@Override
-	public long salirVehiculo(Vehiculo vehiculo) throws Exception {
+	public long salirVehiculo(RegistrosParqueadero registro, Vehiculo vehiculo) throws Exception {
 		CalculadoraCobro calculadoraC = new CalculadoraCobro();
-		long valorTotal = calculadoraC.calcularValorSalidaTotal(vehiculo);
-		vehiculo.setCobro(valorTotal);
+		long valorTotal = calculadoraC.calcularValorSalidaTotal(registro, vehiculo);
+		registro.setCobro(valorTotal);
+		
+		
 		if (vehiculo.getPlaca() == null) {
 			throw new Exception("Debe ingresar una placa");
 		}
@@ -61,22 +69,25 @@ public class VehiculoServiceImpl implements VehiculoService{
 	}
 
 	@Override
-	public Vehiculo consultarVehiculoPorPlaca(String placa) {
+	public Vehiculo consultarVehiculoPorPlaca(String placa) throws Exception {
+		if (placa == null) {
+			throw new Exception("Debe ingresar una placa");
+		}
 		return vehiculoDao.consultarVehiculoPorPlaca(placa);
 	}
 	
 	@Override
-	public Vehiculo consultarVehiculoPorEstado(boolean estado) {
-		return vehiculoDao.consultarVehiculoPorEstado(estado);
+	public RegistrosParqueadero consultarVehiculoPorEstado(boolean estado) {
+		return registrosParqueaderoDao.consultarVehiculoPorEstado(estado);
 	}
 	
 	@Override
 	public int consultarCantidadCarros() {
-		return vehiculoDao.consultarCantidadCarros();
+		return registrosParqueaderoDao.consultarCantidadCarros();
 	}
 
 	@Override
 	public int consultarCantidadMotos() {
-		return vehiculoDao.consultarCantidadMotos();
+		return registrosParqueaderoDao.consultarCantidadMotos();
 	}
 }

@@ -3,6 +3,7 @@ package com.ceiba.parqueadero.service;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.ceiba.parqueadero.model.RegistrosParqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
 
 public class CalculadoraCobro {
@@ -27,17 +28,17 @@ public class CalculadoraCobro {
 		return cantMinutos > 0 ? valorPorHoraTipoVehiculo : 0;
 	}
 	
-	public long calcularValorSalidaTotal(Vehiculo vehiculo) {
+	public long calcularValorSalidaTotal(RegistrosParqueadero registro, Vehiculo vehiculo) {
 		CalculadoraTiempo calculadoraT = new CalculadoraTiempo();
 		Date fechaYHoraDeSalida = new Date ();
-		Date fechaYHoraDeEntrada = vehiculo.getFechaYHoraEntrada();
+		Date fechaYHoraDeEntrada = registro.getFechaYHoraEntrada();
 		long cobroTotal = 0;
 		int cobroAdicional = 0;
 		double diferenciaFechas = 0;
 		
 		diferenciaFechas = calculadoraT.calcularDiferenciaTiempoInSeconds(fechaYHoraDeEntrada, fechaYHoraDeSalida);
 		
-		if( vehiculo.getTipo() == TipoVehiculo.MOTO.getTipoVehiculo() ) {			
+		if( registro.getTipo() == TipoVehiculo.MOTO.getTipoVehiculo() ) {			
 			cobroTotal = calcularTotal( diferenciaFechas, ParametrosParqueadero.COBRO_DIA_MOTO, ParametrosParqueadero.COBRO_HORA_MOTO);
 		}else {
 			cobroTotal = calcularTotal( diferenciaFechas, ParametrosParqueadero.COBRO_DIA_CARRO, ParametrosParqueadero.COBRO_HORA_CARRO);
