@@ -24,7 +24,7 @@ public class ParqueoController {
 	@Autowired
 	public VehiculoService vehiculoService;
 	
-	@RequestMapping(value = "/ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
+	@RequestMapping(value = "ingresos", method = RequestMethod.POST, headers = "Accept=application/json")
 	public ResponseEntity<?> ingresarVehiculo(@RequestBody Vehiculo vehiculo, UriComponentsBuilder uriComponentsBuilder, boolean estado){
 		
 		try {
@@ -35,14 +35,14 @@ public class ParqueoController {
 		
 		HttpHeaders headers = new HttpHeaders();
 		headers.setLocation(
-				uriComponentsBuilder.path("/ingresos/{id}")
+				uriComponentsBuilder.path("ingresos/{id}")
 				.buildAndExpand(vehiculo.getPlaca())
 				.toUri());
 		return new ResponseEntity<String>(headers, HttpStatus.CREATED);
 	}
 	
 	
-	@RequestMapping (value = "/salidas/{placa}", method = RequestMethod.PATCH, headers = "Accept=application/json")
+	@RequestMapping (value = "salidas/{placa}", method = RequestMethod.PATCH, headers = "Accept=application/json")
 	public ResponseEntity<Vehiculo> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo) {
 		Vehiculo vehiculoFuera = vehiculoService.consultarVehiculoPorPlaca(placa);
 		vehiculoFuera.setEstado(vehiculo.isEstado());
