@@ -12,12 +12,16 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ceiba.parqueadero.model.ReciboPago;
+import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
 import com.ceiba.parqueadero.service.ParqueaderoService;
 
 public class ParqueaderoServiceImpTest {
 	
 	@Autowired
 	ParqueaderoService validaciones;
+	
+	@Autowired
+	ComprobacionesEntradaYSalidaVehiculos otrasValidaciones;
 	
 	@Before
 	public void setUp () {
@@ -54,10 +58,10 @@ public class ParqueaderoServiceImpTest {
 		Mockito.when(validaciones.consultarVehiculoPorPlaca(null)).thenReturn(null);
 		
 		//Act
-		ReciboPago consultaOk = validaciones.consultarVehiculoPorPlaca(null);
+		ReciboPago consultaFail = validaciones.consultarVehiculoPorPlaca(null);
 		
 		//Assert
-		assertEquals(null, consultaOk);
+		assertEquals(null, consultaFail);
 	}
 	
 	public void consultarVehiculoPorPlacaOk () throws Exception {
@@ -75,4 +79,15 @@ public class ParqueaderoServiceImpTest {
 		assertEquals(reciboEsperado, consultaOk);
 	}
 	
+	public void ingresoVehiculoSinCeldas () throws Exception{
+		//Arrange
+		int tipoVehiculo = 1;
+		Mockito.when(otrasValidaciones.consultarCantidadCeldas(tipoVehiculo)).thenReturn(false);
+		
+		//Act
+		
+		//Assert
+		
+	}
+
 }

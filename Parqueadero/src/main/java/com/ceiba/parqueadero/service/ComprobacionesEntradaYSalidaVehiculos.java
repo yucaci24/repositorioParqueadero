@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ceiba.parqueadero.dao.ParqueaderoDao;
-import com.ceiba.parqueadero.dao.VehiculoDao;
 
 @Service
 @Transactional
