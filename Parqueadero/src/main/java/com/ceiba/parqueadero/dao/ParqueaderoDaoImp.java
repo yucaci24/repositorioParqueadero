@@ -2,12 +2,11 @@ package com.ceiba.parqueadero.dao;
 
 import javax.transaction.Transactional;
 
-import org.hibernate.transform.Transformers;
 import org.springframework.stereotype.Repository;
 
 import com.ceiba.parqueadero.model.Parqueadero;
 import com.ceiba.parqueadero.model.ReciboPago;
-import com.ceiba.parqueadero.model.Vehiculo;
+
 @Repository("registrosParqueaderoDao")
 @Transactional
 public class ParqueaderoDaoImp extends SessionObjeto implements ParqueaderoDao{

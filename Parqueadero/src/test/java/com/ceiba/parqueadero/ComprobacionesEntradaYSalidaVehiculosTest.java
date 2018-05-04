@@ -7,10 +7,8 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.ceiba.parqueadero.dao.VehiculoDao;
 import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
 import com.ceiba.parqueadero.service.ParametrosParqueadero;
-import com.ceiba.parqueadero.service.TipoVehiculo;
 
 
 public class ComprobacionesEntradaYSalidaVehiculosTest {
@@ -221,7 +219,6 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		//Arrange
 		int carro = 1;
 		boolean disponiblesCarros = false;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
 		
 		//Act
 		if (carro==1) {
@@ -237,7 +234,6 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		//Arrange
 		int moto = 2;
 		boolean disponiblesMotos = false;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
 		
 		//Act
 		if (moto==2) {

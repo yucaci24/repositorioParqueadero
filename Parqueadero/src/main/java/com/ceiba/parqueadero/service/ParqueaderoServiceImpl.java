@@ -4,8 +4,6 @@ import java.util.Date;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.ceiba.parqueadero.dao.ParqueaderoDao;
@@ -53,7 +51,6 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	
 	@Override
 	public void salirVehiculo(ReciboPago recibo) throws Exception {
-		boolean estado = true;
 		if (vehiculoDao.consultarVehiculoPorPlaca(recibo.getPlaca())==null) {
 			throw new Exception("El Vehiculo No Esta En El Parqueadero");
 		}
@@ -63,7 +60,7 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	@Override
 	public ReciboPago consultarVehiculoPorPlaca(String placa) throws Exception {
 		Vehiculo vehiculo = vehiculoDao.consultarVehiculoPorPlaca(placa);
-		Parqueadero registro = ConsultarRegistroIdVehiculo(vehiculo.getId());
+		Parqueadero registro = consultarRegistroIdVehiculo(vehiculo.getId());
 		CalculadoraCobro calculadoraC = new CalculadoraCobro();
 		long valorTotal = calculadoraC.calcularValorSalidaTotal(registro, vehiculo);
 		registro.setCobro(valorTotal);
@@ -85,7 +82,7 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 		ParqueaderoDao.ingresarVehiculo(registrosParqueadero);
 	}
 	
-	public Parqueadero ConsultarRegistroIdVehiculo (int idVehiculo) {
+	public Parqueadero consultarRegistroIdVehiculo (int idVehiculo) {
 		return ParqueaderoDao.consultarRegistroIdVehiculo(idVehiculo);
 	}
 	

@@ -1,7 +1,6 @@
 package com.ceiba.parqueadero.service;
 
 import com.ceiba.parqueadero.model.ReciboPago;
-import com.ceiba.parqueadero.model.Parqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
 
 public interface ParqueaderoService {

@@ -76,9 +76,4 @@ public class Parqueadero {
 		this.idVehiculo = idVehiculo;
 	}
 	
-	public void agregarDatosAlVehiculo (Vehiculo vehiculo) {
-		vehiculo.setId(vehiculo.id);
-		vehiculo.setPlaca(vehiculo.placa);
-		vehiculo.setCilindraje(vehiculo.cilindraje);;
-	}
 }

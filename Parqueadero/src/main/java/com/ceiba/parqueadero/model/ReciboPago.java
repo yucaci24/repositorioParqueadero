@@ -10,7 +10,7 @@ public class ReciboPago {
 	private Date fechaEntrada;
 	private long cobro;
 	
-	public ReciboPago(String placa, boolean estado, int cilindraje, Date fechaEntrada,  Long cobro) {
+	public ReciboPago(String placa, boolean estado, int cilindraje, Date fechaEntrada,  long cobro) {
 		super();
 		this.placa = placa;
 		this.estado = estado;
