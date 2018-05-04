@@ -2,13 +2,13 @@ package com.ceiba.parqueadero;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import com.ceiba.parqueadero.model.ReciboPago;
 import com.ceiba.parqueadero.service.ParqueaderoService;
 
 @RunWith(SpringRunner.class)
@@ -18,16 +18,21 @@ public class ParqueaderoServiceImpTest {
 	@Autowired
 	ParqueaderoService validaciones;
 	
+	@Before
+	public void setUp () {
+		validaciones = Mockito.spy(ParqueaderoService.class);
+	}
+	
 	@Test
-	public void ComprobarConsultaOk () throws Exception {
+	public void ConsultarCantidadCarros ()  {
 		//Arrange
-		String placa = "wer013";
+		Mockito.when(validaciones.consultarCantidadCarros()).thenReturn(2);
 		
 		//Act
-		ReciboPago consultaOk = validaciones.consultarVehiculoPorPlaca(placa);
+		int consultaOk = validaciones.consultarCantidadCarros();
 		
 		//Assert
-		assertEquals(placa, consultaOk.getPlaca());
+		assertEquals(2, consultaOk);
 	}
 
 }

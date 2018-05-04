@@ -47,7 +47,7 @@ public class ParqueoController {
 	
 	@RequestMapping (value = "salidas/{placa}", method = RequestMethod.PATCH, headers = "Accept=application/json")
 	public ResponseEntity<ReciboPago> salirVehiculo (@PathVariable("placa") String placa, @RequestBody Vehiculo vehiculo, Parqueadero registro) {
-		ReciboPago recibo= null;
+		ReciboPago recibo = new ReciboPago(vehiculo.getPlaca(), vehiculo.isEstado(), vehiculo.getCilindraje(), registro.getFechaYHoraEntrada(), registro.getCobro());
 		try {
 			recibo = registrosParqueaderoService.consultarVehiculoPorPlaca(placa);
 		} catch (Exception e1) {
