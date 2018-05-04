@@ -13,5 +13,5 @@ export class AppComponent {
   constructor(){
     this.header_color = GLOBAL.header_color;
   }
-
+      
 }

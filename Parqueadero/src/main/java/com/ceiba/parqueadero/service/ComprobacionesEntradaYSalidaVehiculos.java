@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ceiba.parqueadero.dao.RegistrosParqueaderoDao;
+import com.ceiba.parqueadero.dao.ParqueaderoDao;
 import com.ceiba.parqueadero.dao.VehiculoDao;
 
 @Service
@@ -17,7 +17,7 @@ import com.ceiba.parqueadero.dao.VehiculoDao;
 public class ComprobacionesEntradaYSalidaVehiculos {
 
 		@Autowired
-		public RegistrosParqueaderoDao registrosParqueaderoDao;
+		public ParqueaderoDao registrosParqueaderoDao;
 		
 		public boolean tipoVehiculo (int tipo) {
 			return tipo == TipoVehiculo.CARRO.getTipoVehiculo();

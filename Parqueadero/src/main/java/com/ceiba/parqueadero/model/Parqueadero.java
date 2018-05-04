@@ -7,14 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 
 @Entity
 @Table(name="parqueadero")
-public class RegistrosParqueadero {
+public class Parqueadero {
 	
 	//Attributes
 	@Id
@@ -25,19 +23,21 @@ public class RegistrosParqueadero {
 	@Column (name="fecha_y_hora_entrada")
 	public Date fechaYHoraEntrada;
 	
-	@Column (name="estado")
-	public boolean estado;
-	
 	@Column (name="cobro")
 	public long cobro;
 	
-	@Column (name="tipo_de_vehiculo", nullable= true)
-	public int tipo;
-	
 	@Column (name= "id_vehiculo")
 	public int idVehiculo;
+	
+	
+	public Parqueadero(long cobro, int idVehiculo) {
+		super();
+		this.cobro = cobro;
+		this.idVehiculo = idVehiculo;
+	}
 
-	public RegistrosParqueadero() {
+
+	public Parqueadero() {
 		super();
 	}
 
@@ -57,13 +57,7 @@ public class RegistrosParqueadero {
 		this.fechaYHoraEntrada = fechaYHoraEntrada;
 	}
 
-	public boolean isEstado() {
-		return estado;
-	}
-
-	public void setEstado(boolean estado) {
-		this.estado = estado;
-	}
+	
 
 	public long getCobro() {
 		return cobro;
@@ -74,14 +68,6 @@ public class RegistrosParqueadero {
 	}
 	
 
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
-
 	public int getIdVehiculo() {
 		return idVehiculo;
 	}
@@ -89,5 +75,10 @@ public class RegistrosParqueadero {
 	public void setIdVehiculo(int idVehiculo) {
 		this.idVehiculo = idVehiculo;
 	}
-
+	
+	public void agregarDatosAlVehiculo (Vehiculo vehiculo) {
+		vehiculo.setId(vehiculo.id);
+		vehiculo.setPlaca(vehiculo.placa);
+		vehiculo.setCilindraje(vehiculo.cilindraje);;
+	}
 }

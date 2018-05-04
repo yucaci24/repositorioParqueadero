@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/observable';
-import { Vehiculo } from '../models/Vehiculo';
+import { Vehiculo } from '../models/vehiculo';
 import { GLOBAL } from './global';
 import 'rxjs/add/operator/map';
 

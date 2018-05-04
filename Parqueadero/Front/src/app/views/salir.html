@@ -8,13 +8,11 @@
         Debe ingresar la placa</span>
         <br>
         <br>
-        <label>Estado</label>
-        <input type= "text" #estado="ngModel" name= "estado" value="false" disabled
-        [(ngModel)]= "vehiculo.estado"class="form-control">
-        <br>
-        <br>
         <input type= "submit" value= "{{titulo}}" class="btn btn-success"
         [disabled]= "!formSalir.form.valid">
+        <input type= "text" #estado="ngModel" name= "estado" value="false" disabled
+        [(ngModel)]= "vehiculo.estado"class="form-control" style="visibility: hidden">
+        
 </form>
 <br>
 <br>
@@ -23,14 +21,14 @@
                 <td>Placa</td>
                 <td>Estado</td>
                 <td>Cilindraje</td>
-                <td>Fecha</td>
+                <td>Fecha Entrada</td>
                 <td>Cobro</td>
         </tr>
         <tr>
-                <td>{{res.placa}}</td>
-                <td>{{res.estado}}</td>
+                <td>{{res.placa  }}</td>
+                <td>Fuera</td>
                 <td>{{res.cilindraje}}</td>
-                <td>{{res.fechaYHoraEntrada | date: 'medium'}}</td>
+                <td>{{res.fechaEntrada | date: 'medium'}}</td>
                 <td>{{res.cobro}}</td>
         </tr>
 </table> 

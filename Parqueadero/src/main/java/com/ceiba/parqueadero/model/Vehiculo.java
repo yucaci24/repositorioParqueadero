@@ -30,6 +30,12 @@ public class Vehiculo implements Serializable{
 	@Column (name="cilindraje", nullable= true)
 	public int cilindraje;
 	
+	@Column (name="estado")
+	public boolean estado;
+	
+	@Column (name="tipo_de_vehiculo", nullable= true)
+	public int tipo;
+	
 	public Vehiculo() {
 		super();
 	}
@@ -63,6 +69,22 @@ public class Vehiculo implements Serializable{
 
 	public void setCilindraje(int cilindraje) {
 		this.cilindraje = cilindraje;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+
+	public boolean isEstado() {
+		return estado;
+	}
+
+	public void setEstado(boolean estado) {
+		this.estado = estado;
 	}
 
 }

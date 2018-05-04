@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 /**import { ConsultasService } from '../servicios/consultas.service';*/
-import { Vehiculo } from '../models/Vehiculo';
+import { Vehiculo } from '../models/vehiculo';
 import { SalidasService } from '../servicios/salidas.service';
 
 @Component({

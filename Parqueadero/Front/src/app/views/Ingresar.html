@@ -20,15 +20,6 @@
         <span *ngIf = "!placa.valid && placa.touched" class="label label-success">
         Debe ingresar la placa</span>
         <br>
-
-        <label>Tipo</label>
-        <input type= "text" #tipo="ngModel" name= "tipo" disabled id="tipo"
-        [(ngModel)]= "vehiculo.tipo" class="form-control">
-
-        <label>Estado</label>
-        <input type= "text" #estado="ngModel" name= "estado" disabled
-        [(ngModel)]= "vehiculo.estado"class="form-control">
-
         <label>Cilindraje
         </label>
         <input type= "text" #cilindraje="ngModel" name= "cilindraje" id="cilindraje"
@@ -39,5 +30,15 @@
 
         <input type="submit" value="{{titulo}}"  [disabled]= "!formIngresar.form.valid" 
         class="btn btn-success" >
+
+       
+        <input type= "text" #tipo="ngModel" name= "tipo" disabled id="tipo"
+        [(ngModel)]= "vehiculo.tipo" class="form-control" style="visibility: hidden;">
+
+        
+        <input type= "text" #estado="ngModel" name= "estado" disabled
+        [(ngModel)]= "vehiculo.estado"class="form-control" style="visibility: hidden;">
+
+        
     </form>
 </form>    

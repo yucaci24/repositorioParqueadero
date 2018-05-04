@@ -19,12 +19,13 @@
                 <td>Placa</td>
                 <td>Estado</td>
                 <td>Cilindraje</td>
-                <td>Fecha</td>
+                <td>Fecha Entrada</td>
         </tr>
         <tr>
                 <td>{{res.placa | uppercase}}</td>
                 <td>{{res.estado}}</td>
                 <td>{{res.cilindraje}}</td>
-                <td>{{res.fechaYHoraEntrada | date: 'medium'}}</td>
+                <td>{{res.fechaEntrada | date: 'medium'}}</td>
+                
         </tr>
 </table> 
