@@ -89,10 +89,10 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 		return ParqueaderoDao.consultarRegistroIdVehiculo(idVehiculo);
 	}
 	
-//	@Override
-//	public ReciboPago consultarVehiculoPorEstado(boolean estado) {
-//		return ParqueaderoDao.consultarVehiculoPorEstado(estado);
-//	}
+	@Override
+	public ReciboPago consultarVehiculoPorEstado(boolean estado) {
+		return ParqueaderoDao.consultarVehiculoPorEstado(estado);
+	}
 	
 	@Override
 	public int consultarCantidadCarros() {

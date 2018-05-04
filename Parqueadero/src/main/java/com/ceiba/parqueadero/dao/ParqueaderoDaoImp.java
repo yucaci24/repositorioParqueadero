@@ -36,12 +36,12 @@ public class ParqueaderoDaoImp extends SessionObjeto implements ParqueaderoDao{
 		
 	}
 	
-	//@Override
-//	public Boolean consultarVehiculoPorEstado(boolean estado) {
-//		return (Boolean)getSession().createQuery(
-//				"from Parqueadero where estado = :estado")
-//				.setParameter("estado", estado);
-//	}
+	@Override
+	public ReciboPago consultarVehiculoPorEstado(boolean estado) {
+		return (ReciboPago)getSession().createQuery(
+				"from Parqueadero where estado = :estado")
+				.setParameter("estado", estado);
+	}
 	
 	@Override
 	public void ingresarVehiculo(Parqueadero registro) {
@@ -59,12 +59,6 @@ public class ParqueaderoDaoImp extends SessionObjeto implements ParqueaderoDao{
 				.createQuery("from Parqueadero where idVehiculo = :idVehiculo")
 				.setParameter("idVehiculo", idVehiculo)
 				.list().get(0);
-	}
-
-	@Override
-	public boolean consultarVehiculoPorEstado(boolean estado) {
-		// TODO Auto-generated method stub
-		return (Boolean) null;
 	}
 	
 }
