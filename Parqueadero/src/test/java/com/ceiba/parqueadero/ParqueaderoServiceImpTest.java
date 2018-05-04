@@ -64,19 +64,19 @@ public class ParqueaderoServiceImpTest {
 		assertEquals(null, consultaFail);
 	}
 	
+	@Test
 	public void consultarVehiculoPorPlacaOk () throws Exception {
 		//Arrange
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		Date horaEntrada = format.parse("10/03/2018 12:20");
 		ReciboPago recibo1 = new ReciboPago("wer013", true, 0, horaEntrada, 0);
-		ReciboPago reciboEsperado = new ReciboPago("wer013", true, 0, horaEntrada, 0);
 		Mockito.when(validaciones.consultarVehiculoPorPlaca("wer013")).thenReturn(recibo1);
 		
 		//Act
 		ReciboPago consultaOk = validaciones.consultarVehiculoPorPlaca("wer013");
 		
 		//Assert
-		assertEquals(reciboEsperado, consultaOk);
+		assertEquals(recibo1, consultaOk);
 	}
 	
 	public void ingresoVehiculoSinCeldas () throws Exception{
