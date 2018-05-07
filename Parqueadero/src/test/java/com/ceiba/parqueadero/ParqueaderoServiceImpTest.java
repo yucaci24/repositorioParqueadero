@@ -12,7 +12,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ceiba.parqueadero.model.ReciboPago;
-import com.ceiba.parqueadero.model.Vehiculo;
 import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
 import com.ceiba.parqueadero.service.ParqueaderoService;
 
@@ -81,15 +80,4 @@ public class ParqueaderoServiceImpTest {
 	}
 	
 	
-	public void ingresoVehiculoSinCeldas () throws Exception{
-		//Arrange
-		Vehiculo vehiculo = new Vehiculo(null); 
-		Mockito.doNothing().when(validaciones).ingresarVehiculo(vehiculo);
-		
-		//Act
-		
-		//Assert
-		
-	}
-
 }

@@ -29,7 +29,7 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	
 
 	@Override
-	public void ingresarVehiculo(Vehiculo vehiculo) throws Exception {
+	public Vehiculo ingresarVehiculo(Vehiculo vehiculo) throws Exception {
 		Date date = new Date();
 	
 		if (!validaciones.consultarCantidadCeldas( vehiculo.getTipo() )) {
@@ -47,6 +47,7 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 		vehiculoDao.ingresarVehiculo(vehiculo);
 		realizarRegistro(vehiculo);
 		
+		return vehiculo;
 	}
 	
 	@Override
@@ -84,11 +85,6 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	
 	public Parqueadero consultarRegistroIdVehiculo (int idVehiculo) {
 		return ParqueaderoDao.consultarRegistroIdVehiculo(idVehiculo);
-	}
-	
-	@Override
-	public ReciboPago consultarVehiculoPorEstado(boolean estado) {
-		return ParqueaderoDao.consultarVehiculoPorEstado(estado);
 	}
 	
 	@Override
