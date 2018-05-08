@@ -52,7 +52,7 @@ public class ParqueoController {
 			recibo.setEstado(vehiculo.isEstado());
 			registrosParqueaderoService.salirVehiculo(recibo);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			e1.getMessage();
 			return new ResponseEntity<ReciboPago>(HttpStatus.FORBIDDEN);
 		}
 		recibo.setEstado(vehiculo.isEstado());
@@ -67,7 +67,7 @@ public class ParqueoController {
 		try {
 			vehiculo = registrosParqueaderoService.consultarVehiculoPorPlaca(placa);
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 			return new ResponseEntity<ReciboPago>(HttpStatus.FORBIDDEN);
 		}
 		return new ResponseEntity<ReciboPago>(vehiculo, HttpStatus.OK);
