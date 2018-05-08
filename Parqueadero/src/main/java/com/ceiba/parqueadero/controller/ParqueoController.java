@@ -49,15 +49,14 @@ public class ParqueoController {
 		ReciboPago recibo = new ReciboPago(vehiculo.getPlaca(), vehiculo.isEstado(), vehiculo.getCilindraje(), registro.getFechaYHoraEntrada(), registro.getCobro());
 		try {
 			recibo = registrosParqueaderoService.consultarVehiculoPorPlaca(placa);
+			recibo.setEstado(vehiculo.isEstado());
+			registrosParqueaderoService.salirVehiculo(recibo);
 		} catch (Exception e1) {
 			e1.printStackTrace();
+			return new ResponseEntity<ReciboPago>(HttpStatus.FORBIDDEN);
 		}
 		recibo.setEstado(vehiculo.isEstado());
-		try {
-			registrosParqueaderoService.salirVehiculo( recibo);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 	return new ResponseEntity<ReciboPago>(recibo, HttpStatus.OK);
 	}
 	
@@ -69,6 +68,7 @@ public class ParqueoController {
 			vehiculo = registrosParqueaderoService.consultarVehiculoPorPlaca(placa);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return new ResponseEntity<ReciboPago>(HttpStatus.FORBIDDEN);
 		}
 		return new ResponseEntity<ReciboPago>(vehiculo, HttpStatus.OK);
 	}

@@ -51,11 +51,12 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	}
 	
 	@Override
-	public void salirVehiculo(ReciboPago recibo) throws Exception {
+	public ReciboPago salirVehiculo(ReciboPago recibo) throws Exception {
 		if (vehiculoDao.consultarVehiculoPorPlaca(recibo.getPlaca())==null) {
 			throw new Exception("El Vehiculo No Esta En El Parqueadero");
 		}
 		vehiculoDao.salirVehiculo(recibo);
+		return recibo;
 	}
 
 	@Override

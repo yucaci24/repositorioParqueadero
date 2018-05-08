@@ -9,6 +9,6 @@ public interface ParqueaderoService {
 	ReciboPago consultarVehiculoPorPlaca (String placa) throws Exception;
 	int consultarCantidadCarros ();
 	int consultarCantidadMotos ();
-	void salirVehiculo( ReciboPago recibo) throws Exception;
+	ReciboPago salirVehiculo( ReciboPago recibo) throws Exception;
 	
 }

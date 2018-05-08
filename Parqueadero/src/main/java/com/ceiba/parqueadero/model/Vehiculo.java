@@ -34,10 +34,14 @@ public class Vehiculo implements Serializable{
 	@Column (name="tipo_de_vehiculo", nullable= true)
 	public int tipo;
 	
-	public Vehiculo() {
-		super();
-	}
 	
+	
+	public Vehiculo(String placa, boolean estado) {
+		super();
+		this.placa = placa;
+		this.estado = estado;
+	}
+
 	//Constructor
 	public Vehiculo(String placa) {
 		this.placa = placa;
