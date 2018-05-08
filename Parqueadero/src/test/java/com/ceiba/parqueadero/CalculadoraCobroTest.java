@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import com.ceiba.parqueadero.service.CalculadoraCobro;
+import com.ceiba.parqueadero.service.ParametrosParqueadero;
 
 public class CalculadoraCobroTest {
 	
@@ -66,4 +67,41 @@ public class CalculadoraCobroTest {
 		assertEquals(500, cobroMinutos);
 	}
 	
+	@Test
+	public void validarCobroMinutos0 () {
+		//Arrange
+		int cantidadMinutos = 0;
+		int cobroHora = 500;
+		CalculadoraCobro validaciones = new CalculadoraCobro();
+		
+		//Act
+		long cobroMinutos = validaciones.calcularCobroPorMinutos(cantidadMinutos, cobroHora);
+		
+		//Assert
+		assertEquals(500, cobroMinutos);
+	}
+	
+	@Test
+	public void validarCobroMinutosNegativo () {
+		//Arrange
+		int cantidadMinutos = -1;
+		int cobroHora = 500;
+		CalculadoraCobro validaciones = new CalculadoraCobro();
+		
+		//Act
+		long cobroMinutos = validaciones.calcularCobroPorMinutos(cantidadMinutos, cobroHora);
+		
+		//Assert
+		assertEquals(0, cobroMinutos);
+	}
+	
+	@Test
+	public void validarCalcularCobroTotalMoto () {
+		CalculadoraCobro validaciones = new CalculadoraCobro();
+		long diferenciaFechas = 120584;
+		
+		long total = validaciones.calcularTotal(diferenciaFechas, ParametrosParqueadero.COBRO_DIA_MOTO, ParametrosParqueadero.COBRO_HORA_MOTO);
+		
+		assertEquals(9000, total);
+	}
 }

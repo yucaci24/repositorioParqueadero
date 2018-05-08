@@ -6,13 +6,24 @@ import java.util.Calendar;
 import java.util.Date;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
+import com.ceiba.parqueadero.dao.ParqueaderoDao;
 import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
 import com.ceiba.parqueadero.service.ParametrosParqueadero;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class ComprobacionesEntradaYSalidaVehiculosTest {
 	
+	@InjectMocks
+	ComprobacionesEntradaYSalidaVehiculos comprobacionesEntradaYSalidaVehiculos;
+	
+	@Mock
+	ParqueaderoDao registrosParqueaderoDao;
 
 	@Test
 	public void validarTipoVehiculo2() {
@@ -214,33 +225,33 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		assertFalse(cilindrajeMayor);
 	}
 	
-	@Test
-	public void validarCantidadCeldasCarro() {
-		//Arrange
-		int carro = 1;
-		boolean disponiblesCarros = false;
-		
-		//Act
-		if (carro==1) {
-			disponiblesCarros = 19< ParametrosParqueadero.CELDAS_CARROS;
-		}
-		
-		//Assert
-		assertTrue(disponiblesCarros);
-	}
-	
-	@Test
-	public void validarCantidadCeldasMoto() {
-		//Arrange
-		int moto = 2;
-		boolean disponiblesMotos = false;
-		
-		//Act
-		if (moto==2) {
-			disponiblesMotos = 9< ParametrosParqueadero.CELDAS_MOTOS;
-		}
-		
-		//Assert
-		assertTrue(disponiblesMotos);
-	}
+//	@Test
+//	public void validarCantidadCeldasCarro() {
+//		//Arrange
+//		int carro = 1;
+//		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+//		Mockito.when(registrosParqueaderoDao.consultarCantidadCeldas(carro)).thenReturn(10);
+//		//Act
+//		
+//		boolean	disponiblesCarros = validaciones.consultarCantidadCeldas(carro);
+//		
+//		
+//		//Assert
+//		assertTrue(disponiblesCarros);
+//	}
+//	
+//	@Test
+//	public void validarCantidadCeldasMoto() {
+//		//Arrange
+//		int moto = 2;
+//		boolean disponiblesMotos = false;
+//		
+//		//Act
+//		if (moto==2) {
+//			disponiblesMotos = 9< ParametrosParqueadero.CELDAS_MOTOS;
+//		}
+//		
+//		//Assert
+//		assertTrue(disponiblesMotos);
+	//}
 }

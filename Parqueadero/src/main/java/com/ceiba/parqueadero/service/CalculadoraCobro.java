@@ -25,7 +25,7 @@ public class CalculadoraCobro {
 	}
 	
 	public long calcularCobroPorMinutos( int cantMinutos, int valorPorHoraTipoVehiculo  ){
-		return cantMinutos > 0 ? valorPorHoraTipoVehiculo : 0;
+		return cantMinutos >= 0 ? valorPorHoraTipoVehiculo : 0;
 	}
 	
 	public long calcularValorSalidaTotal(Parqueadero registro, Vehiculo vehiculo) {

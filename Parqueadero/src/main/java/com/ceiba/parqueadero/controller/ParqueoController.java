@@ -31,8 +31,8 @@ public class ParqueoController {
 		try {
 			registrosParqueaderoService.ingresarVehiculo(vehiculo);
 			
-		}catch( Exception e ) {
-			return new ResponseEntity<String>(e.getMessage(), HttpStatus.FORBIDDEN);
+		}catch( Exception noPuedeIngresar ) {
+			return new ResponseEntity<String>(noPuedeIngresar.getMessage(), HttpStatus.FORBIDDEN);
 		}
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -51,8 +51,8 @@ public class ParqueoController {
 			recibo = registrosParqueaderoService.consultarVehiculoPorPlaca(placa);
 			recibo.setEstado(vehiculo.isEstado());
 			registrosParqueaderoService.salirVehiculo(recibo);
-		} catch (Exception e1) {
-			e1.getMessage();
+		} catch (Exception errorSalir) {
+			errorSalir.getMessage();
 			return new ResponseEntity<ReciboPago>(HttpStatus.FORBIDDEN);
 		}
 		recibo.setEstado(vehiculo.isEstado());
