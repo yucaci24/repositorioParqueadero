@@ -78,7 +78,6 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 		return recibo;
 	}
 	
-
 	private void realizarRegistro (Vehiculo vehiculo) {
 		Parqueadero registrosParqueadero = new Parqueadero( 0, vehiculo.getId());
 		ParqueaderoDao.ingresarVehiculo(registrosParqueadero);

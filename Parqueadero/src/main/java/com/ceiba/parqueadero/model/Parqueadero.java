@@ -36,6 +36,12 @@ public class Parqueadero {
 		this.idVehiculo = idVehiculo;
 	}
 
+	public Parqueadero(Date fechaYHoraEntrada, long cobro, int idVehiculo) {
+		super();
+		this.fechaYHoraEntrada = fechaYHoraEntrada;
+		this.cobro = cobro;
+		this.idVehiculo = idVehiculo;
+	}
 
 	public Parqueadero() {
 		super();
