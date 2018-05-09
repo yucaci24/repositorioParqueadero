@@ -23,9 +23,9 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	public ParqueaderoDao ParqueaderoDao;
 	
 	@Autowired
-	public ComprobacionesEntradaYSalidaVehiculos validaciones;
+	public VigilanteService validaciones;
 	
-	CalculadoraCobro cobro = new CalculadoraCobro();
+	CalculadoraCobroService cobro = new CalculadoraCobroService();
 	
 
 	@Override
@@ -63,7 +63,7 @@ public class ParqueaderoServiceImpl implements ParqueaderoService{
 	public ReciboPago consultarVehiculoPorPlaca(String placa) throws Exception {
 		Vehiculo vehiculo = vehiculoDao.consultarVehiculoPorPlaca(placa);
 		Parqueadero registro = consultarRegistroIdVehiculo(vehiculo.getId());
-		CalculadoraCobro calculadoraC = new CalculadoraCobro();
+		CalculadoraCobroService calculadoraC = new CalculadoraCobroService();
 		long valorTotal = calculadoraC.calcularValorSalidaTotal(registro, vehiculo);
 		registro.setCobro(valorTotal);
 		

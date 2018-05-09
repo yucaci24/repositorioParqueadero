@@ -3,7 +3,7 @@ package com.ceiba.parqueadero.service;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class CalculadoraTiempo {
+public class CalculadoraTiempoService {
 	
 	public static final double DAY_IN_SECONDS = 86400;
 	public static final double HOURS_IN_SECONDS = 3600;

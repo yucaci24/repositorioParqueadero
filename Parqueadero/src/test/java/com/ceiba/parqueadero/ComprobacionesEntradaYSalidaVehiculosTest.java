@@ -13,14 +13,14 @@ import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.ceiba.parqueadero.dao.ParqueaderoDao;
-import com.ceiba.parqueadero.service.ComprobacionesEntradaYSalidaVehiculos;
+import com.ceiba.parqueadero.service.VigilanteService;
 import com.ceiba.parqueadero.service.ParametrosParqueadero;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ComprobacionesEntradaYSalidaVehiculosTest {
 	
 	@InjectMocks
-	ComprobacionesEntradaYSalidaVehiculos comprobacionesEntradaYSalidaVehiculos;
+	VigilanteService comprobacionesEntradaYSalidaVehiculos;
 	
 	@Mock
 	ParqueaderoDao registrosParqueaderoDao;
@@ -29,7 +29,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarTipoVehiculo2() {
 		//Arrange
 		int tipo = 2;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean tipoValido = validaciones.tipoVehiculo(tipo);
@@ -42,7 +42,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarTipoVehiculo1() {
 		//Arrange
 		int tipo = 1;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean tipoValido = validaciones.tipoVehiculo(tipo);
@@ -55,7 +55,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarPlacaEmpiezaA () {
 		//Arrange
 		String placa = "ART258";
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean empiezaA = validaciones.comprobarLetraInicial(placa);
@@ -68,7 +68,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarPlacaNoEmpiezaA () {
 		//Arrange
 		String placa = "ORT258";
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean empiezaA = validaciones.comprobarLetraInicial(placa);
@@ -83,7 +83,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 		Date dia = fecha.getTime();
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean siEsDomingo = validaciones.obtenerDia(dia);
@@ -99,7 +99,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
 		Date dia = fecha.getTime();
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean siEsDomingo = validaciones.obtenerDia(dia);
@@ -116,7 +116,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
 		Date dia = fecha.getTime();
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, dia);
@@ -132,7 +132,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		Calendar fecha = Calendar.getInstance();
 		fecha.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 		Date dia = fecha.getTime();
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, dia);
@@ -146,7 +146,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		//Arrange
 		String placa = "CBCD324";
 		Date fecha = Calendar.getInstance().getTime();
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, fecha);
@@ -164,7 +164,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 		
 		Date dia = fecha.getTime();
 		
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean puedeIngresar = validaciones.validoIngresarVehiculo(placa, dia);
@@ -177,7 +177,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarEstadoDentro () {
 		//Arrange
 		boolean estado = true;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act 
 		boolean dentro = validaciones.verificarEstado(estado);
@@ -190,7 +190,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarEstadoFuera () {
 		//Arrange
 		boolean estado = false;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act 
 		boolean fuera = validaciones.verificarEstado(estado);
@@ -203,7 +203,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarCilindrajeMayor () {
 		//Arrange
 		int cilindraje = 600;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean cilindrajeMayor = validaciones.verificarCilindraje(cilindraje);
@@ -216,7 +216,7 @@ public class ComprobacionesEntradaYSalidaVehiculosTest {
 	public void validarCilindrajeMenor () {
 		//Arrange
 		int cilindraje = 200;
-		ComprobacionesEntradaYSalidaVehiculos validaciones = new ComprobacionesEntradaYSalidaVehiculos();
+		VigilanteService validaciones = new VigilanteService();
 		
 		//Act
 		boolean cilindrajeMayor = validaciones.verificarCilindraje(cilindraje);

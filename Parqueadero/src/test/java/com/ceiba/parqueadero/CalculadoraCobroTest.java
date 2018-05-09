@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.ceiba.parqueadero.service.CalculadoraCobro;
+import com.ceiba.parqueadero.service.CalculadoraCobroService;
 import com.ceiba.parqueadero.service.ParametrosParqueadero;
 
 public class CalculadoraCobroTest {
@@ -14,7 +14,7 @@ public class CalculadoraCobroTest {
 		//Arrange
 		int cantidadDias = 3;
 		int cobroDia = 4000;
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		
 		//Act
 		long cobroDias = validaciones.calcularCobroPorDia(cantidadDias, cobroDia);
@@ -29,7 +29,7 @@ public class CalculadoraCobroTest {
 		int cantidadHoras = 10;
 		int cobroHora = 500;
 		int cobroDia = 4000;
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		
 		//Act
 		long cobroHoras = validaciones.calcularCobroPorHoras(cantidadHoras, cobroHora, cobroDia);
@@ -44,7 +44,7 @@ public class CalculadoraCobroTest {
 		int cantidadHoras = 5;
 		int cobroHora = 500;
 		int cobroDia = 4000;
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		
 		//Act
 		long cobroHoras = validaciones.calcularCobroPorHoras(cantidadHoras, cobroHora, cobroDia);
@@ -58,7 +58,7 @@ public class CalculadoraCobroTest {
 		//Arrange
 		int cantidadMinutos = 20;
 		int cobroHora = 500;
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		
 		//Act
 		long cobroMinutos = validaciones.calcularCobroPorMinutos(cantidadMinutos, cobroHora);
@@ -72,7 +72,7 @@ public class CalculadoraCobroTest {
 		//Arrange
 		int cantidadMinutos = 0;
 		int cobroHora = 500;
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		
 		//Act
 		long cobroMinutos = validaciones.calcularCobroPorMinutos(cantidadMinutos, cobroHora);
@@ -86,7 +86,7 @@ public class CalculadoraCobroTest {
 		//Arrange
 		int cantidadMinutos = -1;
 		int cobroHora = 500;
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		
 		//Act
 		long cobroMinutos = validaciones.calcularCobroPorMinutos(cantidadMinutos, cobroHora);
@@ -97,7 +97,7 @@ public class CalculadoraCobroTest {
 	
 	@Test
 	public void validarCalcularCobroTotalMoto () {
-		CalculadoraCobro validaciones = new CalculadoraCobro();
+		CalculadoraCobroService validaciones = new CalculadoraCobroService();
 		long diferenciaFechas = 120584;
 		
 		long total = validaciones.calcularTotal(diferenciaFechas, ParametrosParqueadero.COBRO_DIA_MOTO, ParametrosParqueadero.COBRO_HORA_MOTO);

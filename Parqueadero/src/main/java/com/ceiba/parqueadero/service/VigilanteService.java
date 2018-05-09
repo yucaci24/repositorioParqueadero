@@ -13,7 +13,7 @@ import com.ceiba.parqueadero.dao.ParqueaderoDao;
 
 @Service
 @Transactional
-public class ComprobacionesEntradaYSalidaVehiculos {
+public class VigilanteService {
 
 		@Autowired
 		public ParqueaderoDao registrosParqueaderoDao;

@@ -6,7 +6,7 @@ import java.util.Date;
 import com.ceiba.parqueadero.model.Parqueadero;
 import com.ceiba.parqueadero.model.Vehiculo;
 
-public class CalculadoraCobro {
+public class CalculadoraCobroService {
 	
 	
 	private static final int HORAS_MINIMAS_DIA = 9;
@@ -29,7 +29,7 @@ public class CalculadoraCobro {
 	}
 	
 	public long calcularValorSalidaTotal(Parqueadero registro, Vehiculo vehiculo) {
-		CalculadoraTiempo calculadoraT = new CalculadoraTiempo();
+		CalculadoraTiempoService calculadoraT = new CalculadoraTiempoService();
 		Date fechaYHoraDeSalida = new Date ();
 		Date fechaYHoraDeEntrada = registro.getFechaYHoraEntrada();
 		long cobroTotal = 0;
@@ -52,7 +52,7 @@ public class CalculadoraCobro {
 	}
 	
 	public long calcularTotal( double diferenciaFechas, int cobroDiaVehiculo, int cobroHoraVehiculo ) {
-		CalculadoraTiempo calculadoraT = new CalculadoraTiempo();
+		CalculadoraTiempoService calculadoraT = new CalculadoraTiempoService();
 		long cobroDias = 0;
 		int restoHoras = 0;
 		long cobroHoras = 0;
@@ -65,13 +65,13 @@ public class CalculadoraCobro {
 		
 		cobroDias = this.calcularCobroPorDia(dias, cobroDiaVehiculo);
 		
-		restoHoras = BigDecimal.valueOf((diferenciaFechas - ( dias * CalculadoraTiempo.DAY_IN_SECONDS))).intValue(); 
+		restoHoras = BigDecimal.valueOf((diferenciaFechas - ( dias * CalculadoraTiempoService.DAY_IN_SECONDS))).intValue(); 
 		
 		int horas = calculadoraT.calcularHoras( restoHoras );
 		
 		cobroHoras = this.calcularCobroPorHoras(horas, cobroHoraVehiculo, cobroDiaVehiculo);
 		
-		restoMinutos = BigDecimal.valueOf((restoHoras - ( horas * CalculadoraTiempo.HOURS_IN_SECONDS))).intValue(); 
+		restoMinutos = BigDecimal.valueOf((restoHoras - ( horas * CalculadoraTiempoService.HOURS_IN_SECONDS))).intValue(); 
 		
 		minutos = calculadoraT.calcularPorMinutos( restoMinutos );
 		

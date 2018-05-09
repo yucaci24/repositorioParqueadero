@@ -9,7 +9,7 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import com.ceiba.parqueadero.service.CalculadoraTiempo;
+import com.ceiba.parqueadero.service.CalculadoraTiempoService;
 
 
 public class CalculadoraTiempoTest {
@@ -21,7 +21,7 @@ public class CalculadoraTiempoTest {
 		Date horaEntrada = format.parse("10/03/2018 12:20");
 		Date horaSalida = format.parse("10/03/2018 12:50");
 		double diferenciaEsperada= 1800.0;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double diferenciaFechas = validaciones.calcularDiferenciaTiempoInSeconds(horaEntrada, horaSalida);
@@ -35,7 +35,7 @@ public class CalculadoraTiempoTest {
 		//Arrange
 		double tiempoEnSegundos = 172800.00;
 		double cantidadDiasEsperado = 2;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double cantidadDias = validaciones.calcularDias(tiempoEnSegundos);
@@ -50,7 +50,7 @@ public class CalculadoraTiempoTest {
 		//Arrange
 		double tiempoEnSegundos = 86300.00;
 		double cantidadDiasEsperado = 0;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double cantidadDias = validaciones.calcularDias(tiempoEnSegundos);
@@ -64,7 +64,7 @@ public class CalculadoraTiempoTest {
 		//Arrange
 		double tiempoEnSegundos = 7200.00;
 		double cantidadHorasEsperado = 2;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double cantidadHoras = validaciones.calcularHoras(tiempoEnSegundos);
@@ -78,7 +78,7 @@ public class CalculadoraTiempoTest {
 		//Arrange
 		double tiempoEnSegundos = 3500.00;
 		double cantidadHorasEsperado = 0;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double cantidadHoras = validaciones.calcularHoras(tiempoEnSegundos);
@@ -92,7 +92,7 @@ public class CalculadoraTiempoTest {
 		//Arrange
 		double tiempoEnSegundos = 50.00;
 		double cantidadMinutosEsperado = 0;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double cantidadMinutos = validaciones.calcularPorMinutos(tiempoEnSegundos);
@@ -106,7 +106,7 @@ public class CalculadoraTiempoTest {
 		//Arrange
 		double tiempoEnSegundos = 120.00;
 		double cantidadMinutosEsperado = 2;
-		CalculadoraTiempo validaciones = new CalculadoraTiempo();
+		CalculadoraTiempoService validaciones = new CalculadoraTiempoService();
 		
 		//Act
 		double cantidadMinutos = validaciones.calcularPorMinutos(tiempoEnSegundos);
